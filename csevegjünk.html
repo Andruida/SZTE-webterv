@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HangÁr - Csevegjünk!</title>
+</head>
+
+<body>
+    <header>
+        <h1>HangÁr</h1>
+    </header>
+    <nav>
+        <a class="nav-link" href="/index.html">Kezdőlap</a>
+        <a class="nav-link" href="/projektek.html">Projektjeim</a>
+        <a class="nav-link" href="/visszajelzes.html">Javaslatok</a>
+        <a class="nav-link active" href="/csevegjünk.html">Csevegjünk!</a>
+    </nav>
+
+    <article>
+        <h1> Időpontfoglalás</h1>
+        <p>Üdvözöljük az időpontfoglalás oldalunkon! Az oldal segítségével kényelmesen foglalhat időpontot
+            szolgáltatásainkra.</p>
+
+        <p>Időpontfoglalás lépései</p>
+        <ul>
+            <li>Válassza ki a kívánt szolgáltatást.</li>
+            <li>Válassza ki a dátumot és az időpontot.</li>
+            <li>Adja meg az adatait, beleértve a nevét, az e-mail címét és a telefonszámát.</li>
+            <li>Ellenőrizze a foglalási információkat, és ha minden rendben van, kattintson a "Foglalás" gombra.</li>
+        </ul>
+
+      
+    </article>
+
+    <form>
+        <fieldset>
+            <legend>Találkozz velünk!</legend>
+            <label for="typeSelect">Válassza ki a szolgáltatást:</label>
+            <select id="typeSelect">
+                <option value="Személyes találkozó">Személyes találkozó</option>
+                <option value="Teams meet">Teams meet</option>
+                <option value="Google meet">Google meet</option>
+            </select><br />
+            <label>Melyik nap érsz rá?
+                <input type="date" name="appointment booking date"></label><br />
+            <label>Milyen időpont?
+                <input type="time"></label><br />
+            <label>Email címed: <input type="email" /></label><br />
+            <label>Név:
+                <input type="text" /></label><br />
+            <label>Írd be a telefonszámod:</label>
+                <input type="tel" pattern="\+36 [0-9]{2} [0-9]{3} [0-9]{4}">
+                <br/>
+                <input type="submit" value="Foglalás" />
+        </fieldset>
+    </form>
+
+    <!--<p>
+        <quote>Köszönjük a foglalást! Hamarosan visszaigazolást kap az e-mail címére.</quote>
+    </p>
+
+    <p>Ha bármilyen kérdése vagy problémája van az időpontfoglalással kapcsolatban, kérjük, forduljon a segítségkérő
+        űrlaphoz. Reméljük, hogy szolgáltatásainkkal hamarosan találkozik, és köszönjük, hogy választotta az
+        oldalunkat időpontfoglalásához!</p> 
+    -->
+
+
+
+
+    <footer>
+        <p>Szerkesztő: Borus Benedek, Varga Márk</p>
+        <p><a href="mailto:borus.benedek@gmail.com">borus.benedek@gmail.com</a></p>
+        <p><a href="mailto:warggga10@gmail.com">warggga10@gmail.com</a></p>
+    </footer>
+</body>
+
+</html>
