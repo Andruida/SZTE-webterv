@@ -6,169 +6,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HangÁr - Projektjeim</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
     <header>
-        <h1>HangÁr</h1>
+        <div class="company">
+            <img src="/img/logo/logocrop.png" alt="Cég logó">
+            <h1>HangÁr</h1>
+        </div>
+        <nav>
+            <a class="nav-link" href="/index.html">Kezdőlap</a>
+            <a class="nav-link active" href="/projektek.html">Projektjeim</a>
+            <a class="nav-link" href="/visszajelzes.html">Javaslatok</a>
+            <a class="nav-link" href="/csevegjünk.html">Csevegjünk!</a>
+        </nav>
     </header>
-    <nav>
-        <a class="nav-link" href="/index.html">Kezdőlap</a>
-        <a class="nav-link active" href="/projektek.html">Projektjeim</a>
-        <a class="nav-link" href="/visszajelzes.html">Javaslatok</a>
-        <a class="nav-link" href="/csevegjünk.html">Csevegjünk!</a>
-    </nav>
     <hr>
 
     <main>
         <h2>Projektjeim</h2>
-        <div data-project-name="Echoes of Solitude">
-            <img src="img/rnd0.png" width="100" alt="">
-            <h3>Echoes of Solitude</h3>
-            <p>
-                Egy szólamra épülő, minimálista darab, mely a magány hangjait idézi meg. A zene lassú tempója és az üres terek a hallgatót szólítják meg a saját gondolataikra.
-            </p>
-            <audio controls>
-                <source src="sounds/Echoes of Solitude.mp3" type="audio/mpeg">
-              A böngésződ sajnos nem támogatja csodás dalaim lejátszását :c
-              </audio>
+        <div id="list">
+            <span id="loadingText">Betöltés alatt</span>
         </div>
-        <div data-project-name="Dancing with the Moon">
-            <img src="img/rnd1.png" width="100" alt="">
-            <h3>Dancing with the Moon</h3>
-            <p>Egy éjszakai tánc, mely a Holddal való társulásban rejlik. A zene magával ragadó ritmusa és a lebegő dallamok az éjszakai égboltot idézik</p>
-            <audio controls>
-                <source src="sounds/Dancing with the Moon.mp3" type="audio/mpeg">
-              A böngésződ sajnos nem támogatja csodás dalaim lejátszását :c
-              </audio>
-        </div>
-        <div data-project-name="The Breath of Nature">
-            <img src="img/rnd2.png" width="100" alt="">
-            <h3>The Breath of Nature</h3>
-            <p>
-                Egy éjszakai tánc, mely a Holddal való társulásban rejlik. A zene magával ragadó ritmusa és a lebegő dallamok az éjszakai égboltot idézik.
-            </p>
-            <audio controls>
-                <source src="sounds/The Breath of Nature.mp3" type="audio/mpeg">
-              A böngésződ sajnos nem támogatja csodás dalaim lejátszását :c
-              </audio>
-        </div>
-        <div data-project-name="The Path of Destiny">
-            <img src="img/rnd3.png" width="100" alt="">
-            <h3>The Path of Destiny</h3>
-            <p>
-                Egy utazásra invitáló darab, mely a sors útját jelképezi. A zene dinamikus ritmusa és az erős szólamok a hallgatót a céljuk felé vezetik. </p>
-                <audio controls>
-                    <source src="sounds/The Path of Destiny.mp3" type="audio/mpeg">
-                  A böngésződ sajnos nem támogatja csodás dalaim lejátszását :c
-                  </audio>
-        
-            </div>
-        <div data-project-name="Whispers of the Forest">
-            <img src="img/rnd4.png" width="100" alt="">
-            <h3>Whispers of the Forest</h3>
-            <p>
-                Egy erdő hangjain alapuló darab, mely a fák susogását és a madarak dalát idézi meg. A zene nyugodt tempója és a finom dallamok a természet nyugalmát tükrözik.
-            </p>
-            <audio controls>
-                <source src="sounds/Whispers of the Forest.mp3" type="audio/mpeg">
-              A böngésződ sajnos nem támogatja csodás dalaim lejátszását :c
-              </audio>
-        </div>
-        <div data-project-name="Dancing with the Moon">
-            <img src="img/rnd5.png" width="100" alt="">
-            <h3>Dancing with the Moon</h3>
-            <p>
-                Egy éjszakai tánc, mely a Holddal való társulásban rejlik. A zene magával ragadó ritmusa és a lebegő dallamok az éjszakai égboltot idézik.
-            </p>
-            <audio controls>
-                <source src="sounds/Dancing with the Moon.mp3" type="audio/mpeg">
-              A böngésződ sajnos nem támogatja csodás dalaim lejátszását :c
-              </audio>
-        </div>
-        <div data-project-name="The Tides of Emotion">
-            <img src="img/rnd6.png" width="100" alt="">
-            <h3>The Tides of Emotion</h3>
-            <p>
-                Egy érzelmi hullámzásokra épülő darab, mely a víz mélységét idézi meg. A zene változatos tempója és a kifejező szólamok a hallgató érzelmi állapotának változásait tükrözik.
-             </p>
-             <audio controls>
-                <source src="sounds/The Tides of Emotion.mp3" type="audio/mpeg">
-              A böngésződ sajnos nem támogatja csodás dalaim lejátszását :c
-              </audio>
-        </div>
-        <div data-project-name="The Heart of the Sun">
-            <img src="img/rnd7.png" width="100" alt="">
-            <h3>The Heart of the Sun</h3>
-            <p>
-                Egy napfényes, energetikus darab, mely a nap erős sugarait idézi meg. A zene pezsdítő ritmusa és a fényes dallamok az életenergiát tükrözik.
-             </p>
-             <audio controls>
-                <source src="sounds/The Heart of the Sun.mp3" type="audio/mpeg">
-              A böngésződ sajnos nem támogatja csodás dalaim lejátszását :c
-              </audio>
-        </div>
-        <div data-project-name="The Symphony of the Stars">
-            <img src="img/rnd8.png" width="100" alt="">
-            <h3>The Symphony of the Stars</h3>
-            <p>
-                Egy csillagokra épülő darab, mely a világűr titokzatos zenéjét idézi meg. A zene misztikus tempója és a fényes szólamok a csillagos éjszaka varázslatát tükrözik.
-             </p>
-             <audio controls>
-                <source src="sounds/The Symphony of the Stars.mp3" type="audio/mpeg">
-              A böngésződ sajnos nem támogatja csodás dalaim lejátszását :c
-              </audio>
-        </div>
-        <div data-project-name="The Flames of Passion">
-            <img src="img/rnd9.png" width="100" alt="">
-            <h3>The Flames of Passion</h3>
-            <p>
-                Egy lelkesedést és szenvedélyt tükröző darab, mely a tűz lángjait idézi meg. A zene lendületes tempója és az erős szólamok a hallgató lelkesedését és szenvedélyét tükrözik.
-             </p>
-             <audio controls>
-                <source src="sounds/The Flames of Passion.mp3" type="audio/mpeg">
-              A böngésződ sajnos nem támogatja csodás dalaim lejátszását :c
-              </audio>
-        </div>
-        <div data-project-name="The Echoes of Time">
-            <img src="img/rnd10.png" width="100" alt="">
-            <h3>The Echoes of Time</h3>
-            <p>
-                Egy idő inspirált darab, mely a múlt hangjait idézi meg. A zene lassú tempója és a régies szólamok a múlt emlékeit idézik meg a hallgatóban. A darab az idő múlásának és az emlékek őrzésének fontosságát hívja fel.
-             </p>
-             <audio controls>
-                <source src="sounds/The Echoes of Time.mp3" type="audio/mpeg">
-              A böngésződ sajnos nem támogatja csodás dalaim lejátszását :c
-              </audio>
-        </div>
-        <div data-project-name="It's a dog life out">
-            <img src="img/dog.png" width="100" alt="">
-            <h3>It's a dog life out</h3>
-            <p>
-                Az It's a dog life out egy olyan mű, amely a kutyák mindennapi életét mutatja be humoros és érzelmes módon. Azt mutatja meg, hogy mennyi örömöt és nehézséget hozhat a kutyáinkkal való kapcsolat, valamint a kutyák érdekes és szívmelengető történeteit mutatja be.
-             </p>
-             <audio controls>
-                <source src="sounds/It's a dog life out.mp3" type="audio/mpeg">
-              A böngésződ sajnos nem támogatja csodás dalaim lejátszását :c
-              </audio>
-        </div>
-        
+
     </main>
 
     <hr>
-    <footer>
+    <footer class="footer">
         <p>Szerkesztő: Borus Benedek, Varga Márk</p>
         <p><a href="mailto:borus.benedek@gmail.com">borus.benedek@gmail.com</a></p>
         <p><a href="mailto:warggga10@gmail.com">warggga10@gmail.com</a></p>
     </footer>
-    
+
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
-    <script>
-        $("div[data-project-name]").click((e) => {
-            // console.log(encodeURI($(e.target).data("project-name")))
-            window.location = "/projekt.html?projectName="+encodeURI($(e.target).data("project-name"))
-        })
-    </script>
+    <script src="/js/project_list.js"></script>
 </body>
 
 </html>

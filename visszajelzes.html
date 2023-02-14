@@ -6,18 +6,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HangÁr - Javaslatok</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
     <header>
-        <h1>HangÁr</h1>
+        <div class="company">
+            <img src="/img/logo/logocrop.png" alt="Cég logó">
+            <h1>HangÁr</h1>
+        </div>
+        <nav>
+            <a class="nav-link" href="/index.html">Kezdőlap</a>
+            <a class="nav-link" href="/projektek.html">Projektjeim</a>
+            <a class="nav-link active" href="/visszajelzes.html">Javaslatok</a>
+            <a class="nav-link" href="/csevegjünk.html">Csevegjünk!</a>
+        </nav>
     </header>
-    <nav>
-        <a class="nav-link" href="/index.html">Kezdőlap</a>
-        <a class="nav-link" href="/projektek.html">Projektjeim</a>
-        <a class="nav-link active" href="/visszajelzes.html">Javaslatok</a>
-        <a class="nav-link" href="/csevegjünk.html">Csevegjünk!</a>
-    </nav>
     <hr>
     <main>
         <article>
@@ -38,12 +42,12 @@
         <form>
             <fieldset>
                 <legend>Visszajelzés</legend>
-                <label>Email címed: <input type="email" /></label><br />
+                <label>Email címed: <input type="email" /></label>
                 <label>Név:
-                    <input type="text" /></label><br />
-                <label>Részletes és kifejtett építő jellegű véleménye:<br />
-                    <textarea></textarea></label><br />
-                <label><input type="checkbox" /> Belegyezek, hogy harmadik fél kezelje az adataimat.</label><br />
+                    <input type="text" /></label>
+                <label>Részletes és kifejtett építő jellegű véleménye:
+                    <textarea></textarea></label>
+                <label><input type="checkbox" /> Belegyezek, hogy harmadik fél kezelje az adataimat.</label>
                 <input type="submit" value="Küldés" />
                 <input type="reset" value="vissza mindent" />
             </fieldset>
@@ -55,7 +59,7 @@
     -->
     </main>
     <hr>
-    <footer>
+    <footer class="footer">
         <p>Szerkesztő: Borus Benedek, Varga Márk</p>
         <p><a href="mailto:borus.benedek@gmail.com">borus.benedek@gmail.com</a></p>
         <p><a href="mailto:warggga10@gmail.com">warggga10@gmail.com</a></p>

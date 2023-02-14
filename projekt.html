@@ -6,40 +6,85 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HangÁr</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
     <header>
-        <h1>HangÁr</h1>
+        <div class="company">
+            <img src="/img/logo/logocrop.png" alt="Cég logó">
+            <h1>HangÁr</h1>
+        </div>
+        <nav>
+            <a class="nav-link" href="/index.html">Kezdőlap</a>
+            <a class="nav-link active" href="/projektek.html">Projektjeim</a>
+            <a class="nav-link" href="/visszajelzes.html">Javaslatok</a>
+            <a class="nav-link" href="/csevegjünk.html">Csevegjünk!</a>
+        </nav>
     </header>
-    <nav>
-        <a class="nav-link" href="/index.html">Kezdőlap</a>
-        <a class="nav-link" href="/projektek.html">Projektjeim</a>
-        <a class="nav-link" href="/visszajelzes.html">Javaslatok</a>
-        <a class="nav-link" href="/csevegjünk.html">Csevegjünk!</a>
-    </nav>
     <hr>
     <main>
         <article>
-            <h2><span name="projectName">Példa név</span></h2>
-            <img src="img/pelda.png" name="image"/>
-            <p><span name="description">leírás</span></p>
-            <audio controls>
-                <source src="sounds/song.mp3" type="audio/mpeg" name="song">
-              A böngésződ sajnos nem támogatja csodás dalaim lejátszását :c
-              </audio>
+            <h2><span id="projectName"></span></h2>
+            <img src="#" alt="" width="100" id="projectImage" />
+            <p id="description"></p>
+            <audio controls id="song">
+                <source src="#" type="audio/mpeg">
+                A böngésződ sajnos nem támogatja csodás dalaim lejátszását :c
+            </audio>
         </article>
+
+
+        <!--This is rating-->
+        <br />
+        <p> Értékled a művet:</p>
+        <form class="rating">
+            <label>
+                <input type="radio" name="stars" value="1" />
+                <span class="icon">★</span>
+            </label>
+            <label>
+                <input type="radio" name="stars" value="2" />
+                <span class="icon">★</span>
+                <span class="icon">★</span>
+            </label>
+            <label>
+                <input type="radio" name="stars" value="3" />
+                <span class="icon">★</span>
+                <span class="icon">★</span>
+                <span class="icon">★</span>
+            </label>
+            <label>
+                <input type="radio" name="stars" value="4" />
+                <span class="icon">★</span>
+                <span class="icon">★</span>
+                <span class="icon">★</span>
+                <span class="icon">★</span>
+            </label>
+            <label>
+                <input type="radio" name="stars" value="5" />
+                <span class="icon">★</span>
+                <span class="icon">★</span>
+                <span class="icon">★</span>
+                <span class="icon">★</span>
+                <span class="icon">★</span>
+            </label>
+            <br />
+            <button type="button">Küldés!</button>
+        </form>
+
+
     </main>
     <hr>
-    <footer>
+    <footer class="footer">
         <p>Szerkesztő: Borus Benedek, Varga Márk</p>
         <p><a href="mailto:borus.benedek@gmail.com">borus.benedek@gmail.com</a></p>
         <p><a href="mailto:warggga10@gmail.com">warggga10@gmail.com</a></p>
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
-    <script src="/js/project_generator.js"></script>
-    
+    <script src="/js/project_loader.js"></script>
+
 </body>
 
 </html>
