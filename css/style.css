@@ -1,0 +1,160 @@
+/* Alapértelmezett font és betűméret a dokumentumban */
+body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    max-width: 700px;
+    margin: auto;
+    padding: 0 2%;
+  }
+
+header {
+    background-color: #FFF;
+    z-index: 99;
+}
+  /* Navigációs menü formázása */
+@media screen and (min-width: 550px) and (min-height: 500px) {
+    header {
+        position: sticky;
+        top: 0;
+    }
+}
+nav {
+    display: flex;
+    /* position: sticky; */
+    /* top: initial; */
+
+    flex-wrap: wrap;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+  }
+  
+  /* Navigációs menü linkjeinek formázása */
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+    margin: 0 5px;
+    border-radius: 5px;
+  }
+  
+  /* Aktív navigációs menü link formázása */
+  nav a.active {
+    background-color: #4CAF50;
+    color: #fff;
+  }
+  /* Címsorok formázása */
+  h1, h2, h3 {
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  /* Bekezdések formázása */
+  p {
+    line-height: 1.5;
+  }
+  
+  /* Lábléc formázása */
+  footer {
+    text-align: center;
+    font-style: italic;
+  }
+  
+  /* Űrlap formázása */
+  form {
+    margin: 20px 0;
+  }
+  
+
+  select {
+    margin-bottom: 12px;
+  }
+
+  textarea {
+    display: block;
+  }
+
+  /* Címke formázása */
+  label:not([for]) {
+    display: block;
+    margin-bottom: 12px;
+  }
+  
+  /* Gomb formázása */
+  button, input[type="submit"], input[type="reset"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* Cikk formázása */
+  article {
+    margin: 20px 0;
+  }
+  
+  /* Div formázása */
+  div {
+    padding: 10px;
+    margin: 20px 0;
+    border: 1px solid #ccc;
+  }
+  
+  /* Táblázat formázása */
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  /* Sorszámolt lista formázása */
+  ol {
+    list-style-type: decimal;
+    margin-left: 20px;
+  }
+  
+  /* Pontozott lista formázása */
+  ul {
+    list-style-type: disc;
+    margin-left: 20px;
+  }
+  
+  /* Lista elemek formázása */
+  li {
+    margin: 5px 0;
+  }
+  
+  /* Hivatkozások formázása */
+  a {
+    text-decoration: none;
+    color: #4CAF50;
+    font-weight: bold;
+  }
+  
+  /* Fő tartalom terület formázása */
+  main {
+    margin: 20px 0;
+  }
+  
+  /* Vízszintes vonal formázása */
+  hr {
+    border: 1px solid #ccc;
+    margin: 20px 0;
+  }
+  .company {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+  }
+  .company h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+.company img {
+    height: 40px;
+    margin-right: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+  
