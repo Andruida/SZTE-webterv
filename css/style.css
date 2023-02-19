@@ -38,12 +38,18 @@ nav a {
   padding: 10px;
   margin: 0 5px;
   border-radius: 5px;
+  transition-property: background-color;
+  transition-duration: 100ms;
+  transition-timing-function: linear;
 }
 
 /* Aktív navigációs menü link formázása */
 nav a.active {
   background-color: #4CAF50;
-  color: #fff;
+}
+
+nav a:not(.active):hover {
+  background-color: #225824;
 }
 
 /* Címsorok formázása */
@@ -97,6 +103,15 @@ input[type="reset"] {
   cursor: pointer;
 }
 
+.stars span:hover {
+  color: #daa301;
+}
+
+.stars {
+  width: fit-content;
+  padding-right: 4em;
+}
+
 /* Cikk formázása */
 article {
   margin: 20px 0;
@@ -111,8 +126,16 @@ div {
 
 /* Táblázat formázása */
 table {
-  border-collapse: collapse;
   width: 100%;
+}
+
+table, td, th {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+td {
+  padding: 0.3em;
 }
 
 /* Sorszámolt lista formázása */
@@ -166,4 +189,101 @@ hr {
   height: 40px;
   margin-right: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.company blockquote::before {
+  content: "\"";
+}
+
+.company blockquote::after {
+  content: "\"";
+}
+
+
+.company blockquote {
+  font-weight: normal;
+  font-style: italic;
+}
+
+.card {
+  display: grid;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+  align-items: center;
+  cursor: pointer;
+  transition-property: box-shadow, transform;
+  transition-duration: 200ms;
+  transition-timing-function: linear;
+}
+
+.card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 14px rgba(0, 0, 0, 0.3);
+}
+
+@media screen and (min-width: 550px) {
+
+  .card>img {
+    display: inline-block;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    grid-column: 1;
+    max-width: 10rem;
+  }
+
+  .card>h3,
+  .card>p {
+    padding-left: 1em;
+    grid-column-start: 2;
+    grid-column-end: 6;
+    display: inline-block;
+  }
+
+  .card>p {
+    grid-row: 2;
+    text-align: justify;
+  }
+
+  .card>h3 {
+    grid-row: 1;
+    text-align: left;
+  }
+
+  .card>audio {
+    grid-column: 2;
+    grid-row: 3;
+  }
+}
+
+@media screen and (max-width: 550px) {
+
+  .nomobile {
+    display: none;
+  }
+
+  .card>img {
+    display: inline-block;
+    grid-row: 1;
+    grid-column: 1;
+    max-width: 100%;
+  }
+
+  .card>h3,
+  .card>p {
+    grid-column: 1;
+    display: inline-block;
+    text-align: left;
+  }
+
+  .card>p {
+    grid-row: 3;
+    text-align: justify;
+  }
+
+  .card>h3 {
+    grid-row: 2;
+  }
+
+  .card>audio {
+    grid-row: 4;
+  }
 }

@@ -6,16 +6,16 @@ $(document).ready(() => {
             const pData = data[k];
             if (!pData) return;
             div.append(`
-            <div data-project-name="${k}">
-                <img src="${pData.img}" width="100" alt="">
+            <div data-project-name="${k}" class="card">
+                <img src="${pData.img}" alt="${k}">
                 <h3>${k}</h3>
                 <p>
                     ${pData.html}
                 </p>
-                <audio controls>
+                <!--<audio controls>
                     <source src="${pData.sound}" type="audio/mpeg">
                   A böngésződ sajnos nem támogatja csodás dalaim lejátszását :c
-                  </audio>
+                  </audio>-->
             </div>
             `)
         })
