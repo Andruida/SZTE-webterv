@@ -1,4 +1,3 @@
-/* Alapértelmezett font és betűméret a dokumentumban */
 body {
   font-family: Arial, sans-serif;
   font-size: 16px;
@@ -12,7 +11,6 @@ header {
   z-index: 99;
 }
 
-/* Navigációs menü formázása */
 @media screen and (min-width: 550px) and (min-height: 500px) {
   header {
     position: sticky;
@@ -22,8 +20,6 @@ header {
 
 nav {
   display: flex;
-  /* position: sticky; */
-  /* top: initial; */
 
   flex-wrap: wrap;
   background-color: #333;
@@ -31,7 +27,6 @@ nav {
   padding: 10px;
 }
 
-/* Navigációs menü linkjeinek formázása */
 nav a {
   color: #fff;
   text-decoration: none;
@@ -43,7 +38,6 @@ nav a {
   transition-timing-function: linear;
 }
 
-/* Aktív navigációs menü link formázása */
 nav a.active {
   background-color: #4CAF50;
 }
@@ -52,7 +46,6 @@ nav a:not(.active):hover {
   background-color: #225824;
 }
 
-/* Címsorok formázása */
 h1,
 h2,
 h3 {
@@ -60,18 +53,15 @@ h3 {
   text-align: center;
 }
 
-/* Bekezdések formázása */
 p {
   line-height: 1.5;
 }
 
-/* Lábléc formázása */
 footer {
   text-align: center;
   font-style: italic;
 }
 
-/* Űrlap formázása */
 form {
   margin: 20px 0;
 }
@@ -85,13 +75,11 @@ textarea {
   display: block;
 }
 
-/* Címke formázása */
 label:not([for]) {
   display: block;
   margin-bottom: 12px;
 }
 
-/* Gomb formázása */
 button,
 input[type="submit"],
 input[type="reset"] {
@@ -152,19 +140,16 @@ textarea {
   padding-right: 4em;
 }
 
-/* Cikk formázása */
 article {
   margin: 20px 0;
 }
 
-/* Div formázása */
 div {
   padding: 10px;
   margin: 20px 0;
   border: 1px solid #ccc;
 }
 
-/* Táblázat formázása */
 table {
   width: 100%;
 }
@@ -180,36 +165,30 @@ td {
   padding: 0.3em;
 }
 
-/* Sorszámolt lista formázása */
 ol {
   list-style-type: decimal;
   margin-left: 20px;
 }
 
-/* Pontozott lista formázása */
 ul {
   list-style-type: disc;
   margin-left: 20px;
 }
 
-/* Lista elemek formázása */
 li {
   margin: 5px 0;
 }
 
-/* Hivatkozások formázása */
 a {
   text-decoration: none;
   color: #4CAF50;
   font-weight: bold;
 }
 
-/* Fő tartalom terület formázása */
 main {
   margin: 20px 0;
 }
 
-/* Vízszintes vonal formázása */
 hr {
   border: 1px solid #ccc;
   margin: 20px 0;
@@ -219,10 +198,11 @@ hr {
   display: flex;
   align-items: center;
   font-weight: bold;
+  flex-wrap: wrap;
 }
 
 .company h1 {
-  margin-left: 0.5em;
+  margin-left: 0.8em;
   font-size: 2rem;
   font-weight: bold;
   letter-spacing: 1px;
@@ -230,22 +210,29 @@ hr {
 
 .company img {
   height: 40px;
-  margin-right: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 .company blockquote::before {
-  content: "\"";
+  content: open-quote;
+  display: inline;
+  height: 0;
+  line-height: 0;
+  left: -10px;
+  position: relative;
+  top: 20px;
+  color: #ccc;
+  font-size: 3em;
 }
-
-.company blockquote::after {
-  content: "\"";
-}
-
 
 .company blockquote {
   font-weight: normal;
   font-style: italic;
+  font-size: larger;
+  margin: 0.5em 1.5em;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+  padding: 10px 20px;
+  line-height: 1.4;
 }
 
 .card {
