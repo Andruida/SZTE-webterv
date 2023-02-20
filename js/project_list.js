@@ -12,10 +12,6 @@ $(document).ready(() => {
                 <p>
                     ${pData.html}
                 </p>
-                <!--<audio controls>
-                    <source src="${pData.sound}" type="audio/mpeg">
-                  A böngésződ sajnos nem támogatja csodás dalaim lejátszását :c
-                  </audio>-->
             </div>
             `)
         })
