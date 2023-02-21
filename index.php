@@ -1,30 +1,16 @@
 <!DOCTYPE html>
 <html lang="hu">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HangÁr</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-</head>
+<?php 
+$TITLE_SUFFIX = 'Kezdőlap';
+include(__DIR__.'/components/head.php'); 
+?>
 
 <body>
-    <header>
-        <div class="company">
-            <img id="logo" src="img/logo/logocrop.png" alt="Cég logó">
-            <h1>HangÁr</h1>
-            <blockquote>Én adom a hangot, Ön adja az árát!</blockquote>
-        </div>
-        <nav>
-            <a class="nav-link active" href="index.html">Kezdőlap</a>
-            <a class="nav-link" href="projektek.html">Projektjeim</a>
-            <a class="nav-link" href="visszajelzes.html">Javaslatok</a>
-            <a class="nav-link" href="csevegjünk.html">Csevegjünk!</a>
-        </nav>
-    </header>
-    <hr>
+    <?php 
+    $ACTIVE = 'Kezdőlap';
+    include(__DIR__.'/components/header.php'); 
+    ?>
 
     <main>
         <article>
@@ -54,12 +40,7 @@
             </p>
         </article>
     </main>
-    <hr>
-    <footer class="footer">
-        <p>Szerkesztő: Borus Benedek, Varga Márk</p>
-        <p><a href="mailto:borus.benedek@gmail.com">borus.benedek@gmail.com</a></p>
-        <p><a href="mailto:warggga10@gmail.com">warggga10@gmail.com</a></p>
-    </footer>
+    <?php include(__DIR__.'/components/footer.php'); ?>
 </body>
 
 </html>

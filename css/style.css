@@ -107,6 +107,7 @@ input[type="text"],
 input[type="tel"],
 input[type="date"],
 input[type="time"],
+input[type="password"],
 select,
 textarea {
   background-color: #FFF;
@@ -118,6 +119,10 @@ textarea {
   min-width: 300px;
 }
 
+.borderless {
+  border: none;
+}
+
 @media screen and (max-width: 550px) {
 
   input[type="email"],
@@ -125,6 +130,7 @@ textarea {
   input[type="tel"],
   input[type="date"],
   input[type="time"],
+  input[type="password"],
   select,
   textarea {
     width: 95%;

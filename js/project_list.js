@@ -18,7 +18,7 @@ $(document).ready(() => {
         $("div[data-project-name]").click((e) => {
             console.log(e)
             if ($(e.delegateTarget).data("project-name") !== undefined)
-                window.location = "projekt.html?projectName="+encodeURI($(e.delegateTarget).data("project-name"))
+                window.location = "projekt.php?projectName="+encodeURI($(e.delegateTarget).data("project-name"))
         })
     })
 })
