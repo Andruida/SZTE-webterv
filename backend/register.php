@@ -12,10 +12,40 @@ foreach ($_POST as $key => $value) {
     if ($key == 'introduction') continue;
     if (isset($value) && !empty($value)) {
         $_POST[$key] = trim($value);
+        if (count($_POST[$key]) > 100) {
+            header("Location: ../bejelentkezés.php?form=register&error=FieldTooLong&email=".urlencode($email).
+            "&display_name=".urldecode($_POST['display_name']).
+            "&birth_date=".urldecode($_POST['birth_date']).
+            "&introduction=".urldecode($_POST['introduction']));
+            echo "A(z) $key mező túl hosszú!";
+            exit();
+        }
     } else {
+        header("Location: ../bejelentkezés.php?error=EmptyField&form=register&email=".urlencode($email).
+            "&display_name=".urldecode($_POST['display_name']).
+            "&birth_date=".urldecode($_POST['birth_date']).
+            "&introduction=".urldecode($_POST['introduction']));
         echo "A(z) $key mező nem lehet üres!";
         exit();
     }
+}
+
+if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+    header("Location: ../bejelentkezés.php?form=register&error=InvalidEmail&email=".urlencode($email).
+    "&display_name=".urldecode($_POST['display_name']).
+    "&birth_date=".urldecode($_POST['birth_date']).
+    "&introduction=".urldecode($_POST['introduction']));
+    echo "Az e-mail cím formátuma nem megfelelő.";
+    exit();
+}
+
+if (count($_POST['password']) < 8) {
+    header("Location: ../bejelentkezés.php?form=register&error=PasswordTooShort&email=".urlencode($email).
+    "&display_name=".urldecode($_POST['display_name']).
+    "&birth_date=".urldecode($_POST['birth_date']).
+    "&introduction=".urldecode($_POST['introduction']));
+    echo "A jelszó túl rövid.";
+    exit();
 }
 
 
@@ -27,21 +57,44 @@ include(__DIR__ . '/conn.php');
 
 
 if ($_POST['password'] != $_POST['password1']) {
+    header("Location: ../bejelentkezés.php?form=register&error=PasswordsDontMatch&email=".urlencode($email).
+    "&display_name=".urldecode($display_name).
+    "&birth_date=".urldecode($_POST['birth_date']).
+    "&introduction=".urldecode($_POST['introduction']));
     echo ("A jelszavak nem egyeznek meg.");
     exit();
 } else {
     $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
 }
 
-$sql = "SELECT * FROM users WHERE display_name=? OR email=?";
+$sql = "SELECT * FROM users WHERE email=?";
 $stmt = mysqli_prepare($conn, $sql);
-$success = mysqli_stmt_execute($stmt, [$display_name, $email]);
+$success = mysqli_stmt_execute($stmt, [$email]);
 $result = mysqli_stmt_get_result($stmt);
 
 if (mysqli_num_rows($result) > 0) {
-    echo "A felhasználónév vagy az e-mail cím már foglalt.";
+    header("Location: ../bejelentkezés.php?form=register&error=EmailIsInUse&email=".urlencode($email).
+    "&display_name=".urldecode($display_name).
+    "&birth_date=".urldecode($_POST['birth_date']).
+    "&introduction=".urldecode($_POST['introduction']));
+    echo "Az e-mail cím már foglalt.";
     exit();
 }
+
+$sql = "SELECT * FROM users WHERE display_name=?";
+$stmt = mysqli_prepare($conn, $sql);
+$success = mysqli_stmt_execute($stmt, [$display_name]);
+$result = mysqli_stmt_get_result($stmt);
+
+if (mysqli_num_rows($result) > 0) {
+    header("Location: ../bejelentkezés.php?form=register&error=DisplayNameIsInUse&email=".urlencode($email).
+    "&display_name=".urldecode($display_name).
+    "&birth_date=".urldecode($_POST['birth_date']).
+    "&introduction=".urldecode($_POST['introduction']));
+    echo "A felhasználónév már foglalt.";
+    exit();
+}
+
 $sql = "INSERT INTO users 
     (`display_name`, `email`, `password`, `birth_date`, `introduction`) 
     VALUES (?, ?, ?, ?, ?)";
@@ -55,6 +108,10 @@ $success = mysqli_stmt_execute($stmt, [
     $_POST['introduction']
 ]);
 if (!$success) {
+    header("Location: ../bejelentkezés.php?form=register&error=ErrorAtRegistration=".urlencode($email).
+    "&display_name=".urldecode($display_name).
+    "&birth_date=".urldecode($_POST['birth_date']).
+    "&introduction=".urldecode($_POST['introduction']));
     echo "Hiba a regisztráció során: " . mysqli_error($conn);
     exit();
 }

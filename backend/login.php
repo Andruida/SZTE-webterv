@@ -10,17 +10,21 @@ if (isset($_SESSION['id']) && !empty($_SESSION['id'])) {
 $email = $_POST['email'];
 $password = $_POST['password'];
 
+
 if (isset($password) && !empty($password)) {
     $password = trim($password);
 } else {
+    header("Location: ../bejelentkezés.php?form=login&error=EmptyPassword&email=".urlencode($email));
     echo "A jelszó mező nem lehet üres!";
     exit();
 }
 
-if (isset($email) && !empty($email)) {
+
+if (isset($email) && filter_var($email, FILTER_VALIDATE_EMAIL)) {
     $email = trim($email);
 } else {
-    echo "Az email mező nem lehet üres!";
+    header("Location: ../bejelentkezés.php?form=login&error=InvalidEmail&email=".urlencode($email));
+    echo "Az e-mail cím formátuma nem megfelelő.";
     exit();
 }
 
@@ -42,10 +46,10 @@ if (mysqli_num_rows($result) == 1) {
     header("Location: ../index.php");
     echo "Sikeres bejelentkezés!";
   } else {
+    header("Location: ../bejelentkezés.php?form=login&error=WrongPassword&email=".urlencode($email));
     echo "Hibás jelszó!";
   }
 } else {
+  header("Location: ../bejelentkezés.php?form=login&error=UserDoesntExist&email=".urlencode($email));
   echo "A felhasználónév nem található.";
 }
-
-?>

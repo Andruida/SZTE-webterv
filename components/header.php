@@ -2,12 +2,19 @@
 
 session_start();
 
-$pages = [
+$_pages = [
     "Kezdőlap" => "index.php",
     "Projektjeim" => "projektek.php",
     "Javaslatok" => "visszajelzes.php",
     "Csevegjünk!" => "csevegjünk.php",
 ];
+
+if (isset($_SESSION["id"]) && !empty($_SESSION["id"])) {
+    $_pages["Profilom"] = "profil.php";
+    $_pages["Kijelentkezés"] = "backend/logout.php";
+} else {
+    $_pages["Bejelentkezés"] = "bejelentkezés.php";
+}
 
 if (isset($ACTIVE) && !empty($ACTIVE)) {
     $_active = $ACTIVE;
@@ -23,7 +30,7 @@ if (isset($ACTIVE) && !empty($ACTIVE)) {
     </div>
     <nav>
         <?php 
-        foreach ($pages as $_page_name => $_href) { 
+        foreach ($_pages as $_page_name => $_href) { 
             if ($_page_name === $_active) {
                 $_class =" active";
             } else {
@@ -31,17 +38,8 @@ if (isset($ACTIVE) && !empty($ACTIVE)) {
             }
         ?>
         <a class="nav-link<?= $_class ?>" href="<?= $_href ?>"><?= $_page_name ?></a>
-        <?php }
-        if (isset($_SESSION['id']) && !empty($_SESSION['id'])) {
-            $_page_name = "Kijelentkezés";
-            $_href = "backend/logout.php";
-        } else {
-            $_page_name = "Bejelentkezés";
-            $_href = "login_register.php";
-        }
-        ?>
-        <a class="nav-link<?= $_class ?>" href="<?= $_href ?>"><?= $_page_name ?></a>
+        <?php } ?>
     </nav>
 </header>
 <hr>
-<?php unset($_active, $_page_name, $_href, $_class); ?>
+<?php unset($_active, $_page_name, $_href, $_class, $_pages); ?>
