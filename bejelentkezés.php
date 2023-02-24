@@ -1,4 +1,7 @@
 <?php
+
+include(__DIR__.'/backend/validator.php');
+
 session_start();
 
 if (isset($_SESSION['id']) && !empty($_SESSION['id'])) {
@@ -31,11 +34,11 @@ include(__DIR__.'/components/head.php');
     <form action="backend/login.php" method="post">
         <fieldset>
             <div class="borderless">
-                <label class="required" for="email">Email cím:</label>
-                <input required type="text" id="email" name="email"
+                <label class="required" for="loginEmail">Email cím:</label>
+                <input required type="text" id="loginEmail" name="email"
                 value="<?= ((!empty($_GET["error"]) && $_GET["form"] == "login") ? $_GET["email"] : "") ?>"/><br />
-                <label class="required" for="password">Jelszó:</label>
-                <input required minlength="8" maxlength="100" type="password" id="password" name="password"><br />
+                <label class="required" for="loginPassword">Jelszó:</label>
+                <input required minlength="8" maxlength="100" type="password" id="loginPassword" name="password"><br />
                 <input type="submit" value="Bejelentkezés"/>
             </div>
         </fieldset>

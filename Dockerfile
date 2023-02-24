@@ -6,6 +6,5 @@ RUN chmod a+x /usr/local/bin/install-php-extensions \
  && apt-get update && apt-get install -y tzdata dnsutils \
  && apt-get clean
 
-
-RUN install-php-extensions mysqli \
+RUN install-php-extensions mysqli tidy \
  && mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"

@@ -1,7 +1,8 @@
+<?php include(__DIR__.'/backend/validator.php'); ?>
 <!DOCTYPE html>
 <html lang="hu">
 
-<?php 
+<?php
 $TITLE_SUFFIX = 'Csevegjünk';
 include(__DIR__.'/components/head.php'); 
 ?>

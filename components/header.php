@@ -6,14 +6,14 @@ $_pages = [
     "Kezdőlap" => "index.php",
     "Projektjeim" => "projektek.php",
     "Javaslatok" => "visszajelzes.php",
-    "Csevegjünk!" => "csevegjünk.php",
+    "Csevegjünk!" => "csevegj%C3%BCnk.php",
 ];
 
 if (isset($_SESSION["id"]) && !empty($_SESSION["id"])) {
     $_pages["Profilom"] = "profil.php";
     $_pages["Kijelentkezés"] = "backend/logout.php";
 } else {
-    $_pages["Bejelentkezés"] = "bejelentkezés.php";
+    $_pages["Bejelentkezés"] = "bejelentkez%C3%A9s.php";
 }
 
 if (isset($ACTIVE) && !empty($ACTIVE)) {

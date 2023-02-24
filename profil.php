@@ -1,4 +1,5 @@
-<?php
+<?php 
+include(__DIR__.'/backend/validator.php'); 
 
 session_start();
 

@@ -1,3 +1,4 @@
+<?php include(__DIR__.'/backend/validator.php'); ?>
 <!DOCTYPE html>
 <html lang="hu">
 
