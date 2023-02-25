@@ -62,7 +62,9 @@ include(__DIR__ . '/components/head.php');
                         <label for="picture_upload">Profilkép feltöltése:</label>
                         <input type="file" id="picture_upload" name="picture_upload">
                     </div>
-                    <input type="submit" value="szerkesztés">
+                    <div class="borderless buttons">
+                        <input type="submit" value="szerkesztés">
+                    </div>
                 </div>
             </fieldset>
         </form>

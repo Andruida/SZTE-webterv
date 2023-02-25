@@ -159,6 +159,10 @@ input[type="file"] {
   }
 }
 
+fieldset {
+  padding: 1.5rem;
+}
+
 .stars span:hover {
   color: #daa301;
 }
@@ -351,15 +355,19 @@ hr {
   }
 }
 .profileData {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 10px;
+  display: grid;
+  margin: 0;
+  padding: 0;
+}
+.profileData div {
+  margin: 0;
+  padding: 0;
 }
 
-.profileData.picture {
-  flex-basis: 30%;
+.profileData .picture {
+  grid-column: 2;
 }
 
-.profileData.fields {
-  flex-basis: 68%;
+.profileData .fields {
+  grid-column: 1;
 }

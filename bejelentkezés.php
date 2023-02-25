@@ -1,6 +1,6 @@
 <?php
 
-include(__DIR__.'/backend/validator.php');
+include(__DIR__ . '/backend/validator.php');
 
 session_start();
 
@@ -10,7 +10,7 @@ if (isset($_SESSION['id']) && !empty($_SESSION['id'])) {
 }
 
 // sanitize GET fields
-foreach($_GET as $key => $value) {
+foreach ($_GET as $key => $value) {
     $_GET[$key] = htmlspecialchars($value);
 }
 ?>
@@ -19,28 +19,39 @@ foreach($_GET as $key => $value) {
 
 <?php
 $TITLE_SUFFIX = 'Bejelentkezés';
-include(__DIR__.'/components/head.php'); 
+include(__DIR__ . '/components/head.php');
 ?>
 
 <body>
 
     <?php
     $ACTIVE = 'Bejelentkezés';
-    include(__DIR__.'/components/header.php'); 
+    include(__DIR__ . '/components/header.php');
     ?>
-  
+
 
     <h1>Bejelentkezés</h1>
     <form action="backend/login.php" method="post">
         <fieldset>
-            <div class="borderless">
-                <label class="required" for="loginEmail">Email cím:</label>
-                <input required type="text" id="loginEmail" name="email"
-                value="<?= ((!empty($_GET["error"]) && $_GET["form"] == "login") ? $_GET["email"] : "") ?>"/><br />
-                <label class="required" for="loginPassword">Jelszó:</label>
-                <input required minlength="8" maxlength="100" type="password" id="loginPassword" name="password"><br />
-                <input type="submit" value="Bejelentkezés"/>
-            </div>
+            <label class="required" for="loginEmail">Email cím:</label>
+            <input required type="text" id="loginEmail" name="email" value="<?= ((!empty($_GET["error"]) && $_GET["form"] == "login") ? $_GET["email"] : "") ?>" />
+            <?php if (!empty($_GET["error"]) && $_GET["form"] == "login" && $_GET["error"] == "InvalidEmail") { ?>
+                <span class="error">Érvénytelen e-mail cím!</span>
+            <?php } ?>
+            <?php if (!empty($_GET["error"]) && $_GET["form"] == "login" && $_GET["error"] == "UserDoesntExist") { ?>
+                <span class="error">A felhasználó nem létezik!</span>
+            <?php } ?><br />
+
+            <label class="required" for="loginPassword">Jelszó:</label>
+            <input required minlength="8" maxlength="100" type="password" id="loginPassword" name="password">
+            <?php if (!empty($_GET["error"]) && $_GET["form"] == "login" && $_GET["error"] == "EmptyPassword") { ?>
+                <span class="error">A jelszó mező nem lehet üres!</span>
+            <?php } ?>
+            <?php if (!empty($_GET["error"]) && $_GET["form"] == "login" && $_GET["error"] == "WrongPassword") { ?>
+                <span class="error">Hibás jelszó!</span>
+            <?php } ?><br />
+
+            <input type="submit" value="Bejelentkezés" />
         </fieldset>
     </form>
 
@@ -52,52 +63,43 @@ include(__DIR__.'/components/head.php');
             <?php
             $faultyRegister = (!empty($_GET["error"]) && $_GET["form"] == "register")
             ?>
-            <div class="borderless">
-                <label class="required" for="display_name">Felhasználónév:</label>
-                <input required type="text" maxlength="100" id="display_name" name="display_name"
-                value="<?= ($faultyRegister ? $_GET["display_name"] : "") ?>" />
-                <?php if ($faultyRegister && $_GET["error"] == "DisplayNameIsInUse") { ?>
-                    <span class="error">Ez a felhasználónév már foglalt!</span>
-                <?php } ?><br />
+            <label class="required" for="display_name">Felhasználónév:</label>
+            <input required type="text" maxlength="100" id="display_name" name="display_name" value="<?= ($faultyRegister ? $_GET["display_name"] : "") ?>" />
+            <?php if ($faultyRegister && $_GET["error"] == "DisplayNameIsInUse") { ?>
+                <span class="error">Ez a felhasználónév már foglalt!</span>
+            <?php } ?><br />
 
-                <label class="required" for="email">E-mail cím:</label>
-                <input required type="email" id="email" name="email"
-                value="<?= ($faultyRegister ? $_GET["email"] : "") ?>">
-                <?php if ($faultyRegister && $_GET["error"] == "EmailIsInUse") { ?>
-                    <span class="error">Ez az e-mail cím már foglalt!</span>
-                <?php } ?><br />
+            <label class="required" for="email">E-mail cím:</label>
+            <input required type="email" id="email" name="email" value="<?= ($faultyRegister ? $_GET["email"] : "") ?>">
+            <?php if ($faultyRegister && $_GET["error"] == "EmailIsInUse") { ?>
+                <span class="error">Ez az e-mail cím már foglalt!</span>
+            <?php } ?><br />
 
-                <label class="required" for="password">Jelszó:</label>
-                <input required placeholder="Legalább 8 karakter" minlength="8" 
-                maxlength="100" type="password" id="password" name="password" />
-                <?php if ($faultyRegister && $_GET["error"] == "PasswordTooShort") { ?>
-                    <span class="error">A jelszó túl rövid (legyen legalább 8 karakter)!</span>
-                <?php } ?><br />
+            <label class="required" for="password">Jelszó:</label>
+            <input required placeholder="Legalább 8 karakter" minlength="8" maxlength="100" type="password" id="password" name="password" />
+            <?php if ($faultyRegister && $_GET["error"] == "PasswordTooShort") { ?>
+                <span class="error">A jelszó túl rövid (legyen legalább 8 karakter)!</span>
+            <?php } ?><br />
 
-                <label class="required" for="password1">Jelszó mégegyszer:</label>
-                <input required placeholder="Legalább 8 karakter" minlength="8" 
-                maxlength="100" type="password" id="password1" name="password1" />
-                <?php if ($faultyRegister && $_GET["error"] == "PasswordsDontMatch") { ?>
-                    <span class="error">A jelszavak nem egyeznek!</span>
-                <?php } ?><br />
+            <label class="required" for="password1">Jelszó mégegyszer:</label>
+            <input required placeholder="Legalább 8 karakter" minlength="8" maxlength="100" type="password" id="password1" name="password1" />
+            <?php if ($faultyRegister && $_GET["error"] == "PasswordsDontMatch") { ?>
+                <span class="error">A jelszavak nem egyeznek!</span>
+            <?php } ?><br />
 
-                <label class="required" for="birth_date">Születési dátum:</label>
-                <input required type="date" id="birth_date" name="birth_date" 
-                value="<?= ($faultyRegister ? $_GET["birth_date"] : "") ?>"/><br />
+            <label class="required" for="birth_date">Születési dátum:</label>
+            <input required type="date" id="birth_date" name="birth_date" value="<?= ($faultyRegister ? $_GET["birth_date"] : "") ?>" /><br />
 
-                <label for="introduction">Bemutatkozás:</label>
-                <textarea id="introduction" name="introduction" rows="3">
+            <label for="introduction">Bemutatkozás:</label>
+            <textarea id="introduction" name="introduction" rows="3">
                 <?= ($faultyRegister ? $_GET["introduction"] : "") ?>
-                </textarea><br />
+            </textarea><br />
 
-
-
-                <input type="submit" value="Regisztráció">
-            </div>
+            <input type="submit" value="Regisztráció">
         </fieldset>
     </form>
 
-    <?php include(__DIR__."/components/footer.php"); ?>
+    <?php include(__DIR__ . "/components/footer.php"); ?>
 </body>
 
 </html>

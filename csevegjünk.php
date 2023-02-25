@@ -106,7 +106,7 @@ include(__DIR__.'/components/head.php');
         <form>
             <fieldset>
                 <legend>Találkozz velünk!</legend>
-                <div>
+                <div style="margin-top: 0;">
                     <label>Választott szolgáltatás:</label>
                     <input type="checkbox" id="szolgaltatas1" name="szolgaltatas" />
                     <label for="szolgaltatas1"> Hangtechnikai szolgáltatások</label><br />
