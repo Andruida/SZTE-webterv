@@ -81,8 +81,13 @@ label:not([for]) {
   margin-bottom: 12px;
 }
 
+input:read-only:not(input[type="file"]), textarea:read-only {
+  border: 1px solid #EEE!important;
+}
+
 button,
 input[type="submit"],
+input[type="button"],
 input[type="reset"] {
   background-color: #4CAF50;
   color: white;
@@ -98,6 +103,7 @@ input[type="reset"] {
 }
 
 button:hover,
+input[type="button"]:hover,
 input[type="submit"]:hover,
 input[type="reset"]:hover {
   background-color: #439b46;
@@ -370,4 +376,12 @@ hr {
 
 .profileData .fields {
   grid-column: 1;
+}
+
+.profileData img {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  max-width: 80%;
+  margin-bottom: 10px;
 }
