@@ -14,8 +14,17 @@ if (extension_loaded('tidy')) {
         ], 'utf8');
         $tidy->cleanRepair();
         // $tidy->diagnose();
-        if (strlen($tidy->errorBuffer) > 0) 
-            error_log($_SERVER["PHP_SELF"]."\n".$tidy->errorBuffer."\n", 3, __DIR__ . '/../tidy.log');
+        if (strlen($tidy->errorBuffer) > 0) {   
+            $lines = explode("\n", $tidy->errorBuffer);
+            foreach ($lines as $k => $line) {
+                if (strpos($line, 'proprietary attribute "minlength"') !== false) {
+                    unset($lines[$k]);
+                }
+            }
+            $filteredErrorBuffer = implode("\n", $lines);
+            if (strlen($filteredErrorBuffer) > 0)
+                error_log($_SERVER["PHP_SELF"]."\n".$filteredErrorBuffer."\n", 3, __DIR__ . '/../tidy.log');
+        }
 
         echo $tidy;
     });
