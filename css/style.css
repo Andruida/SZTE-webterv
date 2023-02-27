@@ -132,6 +132,10 @@ input+span.error {
   margin-top: 0.4em;
 }
 
+input:has(+span.error) {
+  border-color: red;
+}
+
 label.required::after {
   content: " *";
   color: red;

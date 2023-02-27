@@ -3,17 +3,17 @@
 session_start();
 
 if (!isset($_SESSION['id']) || empty($_SESSION['id'])) {
-    header("Location: bejelentkezés.php");
+    header("Location: ../bejelentkezés.php");
     exit();
 }
 
-function redirectWithError($error) {
+function redirectWithError($error, $extra = "") {
     header(
         "Location: ../profil.php?error=$error".
         "&email=".urlencode($_POST['email']).
         "&display_name=".urlencode($_POST['display_name']).
         "&birth_date=".urlencode($_POST['birth_date']).
-        "&introduction=".urlencode($_POST['introduction'])
+        "&introduction=".urlencode($_POST['introduction']).$extra
     );
     exit();
 }
@@ -21,16 +21,22 @@ function redirectWithError($error) {
 $notRequired = ['introduction', 'password', 'password1', 'picture_upload'];
 
 foreach ($_POST as $key => $value) {
-    if (array_search($key, $notRequired)) continue;
-    if (isset($value) && !empty($value)) {
+    if (isset($value)) {
         $_POST[$key] = trim($value);
+    }
+}
+
+foreach ($_POST as $key => $value) {
+    
+    if (isset($value) && !empty($value)) {
         if (strlen($_POST[$key]) > 100) {
-            redirectWithError("FieldTooLong");
+            redirectWithError("FieldTooLong", "&field=".urlencode($key));
             echo "A(z) $key mező túl hosszú!";
             exit();
         }
     } else {
-        redirectWithError("EmptyField");
+        if (array_search($key, $notRequired)) continue;
+        redirectWithError("EmptyField", "&field=".urlencode($key));
         echo "A(z) $key mező nem lehet üres!";
         exit();
     }
@@ -61,7 +67,7 @@ if (isset($_POST['password']) && !empty($_POST['password'])) {
     }
 }
 
-if (isset($_FILES['picture_upload']) && !empty($_FILES['picture_upload'])) {
+if (isset($_FILES['picture_upload']) && !empty($_FILES['picture_upload']) && $_FILES['picture_upload']['size'] !== 0) {
     $file = $_FILES['picture_upload'];
     $fileName = $file['name'];
     $fileTmpName = $file['tmp_name'];
@@ -82,7 +88,7 @@ if (isset($_FILES['picture_upload']) && !empty($_FILES['picture_upload'])) {
         echo "Hiba történt a kép feltöltése során!";
         exit();
     }
-    if ($fileSize < 1000000) {
+    if ($fileSize > 5242880) {
         redirectWithError("FileTooBig");
         echo "A kép mérete túl nagy!";
         exit();
@@ -143,7 +149,7 @@ if ($success) {
     header("Location: ../profil.php");
     exit();
 } else {
-    redirectWithError("SaveError");
+    redirectWithError("DatabaseError");
     echo "Hiba történt a mentés során!";
 }
 

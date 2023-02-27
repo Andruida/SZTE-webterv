@@ -1,5 +1,12 @@
 <?php 
 session_start();
+
+
+if (!isset($_SESSION['id']) || empty($_SESSION['id'])) {
+  header("Location: ../bejelentkezés.php");
+  exit();
+}
+
 include(__DIR__.'/conn.php');
 
 $sql = "DELETE FROM users WHERE id =?";

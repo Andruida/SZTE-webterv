@@ -1,12 +1,16 @@
 <?php
 session_start();
 
+if (!isset($_SESSION['id']) || empty($_SESSION['id'])) {
+    header("Location: ../bejelentkezés.php");
+    exit();
+}
+
 require(__DIR__."/conn.php");
 
 $szolgaltatas = $_POST['szolgaltatas'];
 $typeSelect=$_POST['typeSelect'];
 $bookingDate=$_POST['appointment booking date'];
-$bookingTime=$_POST['time'];
 $bookingTime=$_POST['time'];
 $mobileNumber=$_POST['mobileNumber'];
 
