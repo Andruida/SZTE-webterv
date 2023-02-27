@@ -29,32 +29,22 @@ foreach ($_POST as $key => $value) {
     if (isset($value) && !empty($value)) {
         if (strlen($_POST[$key]) > 100) {
             redirectWithError("FieldTooLong", "&field=".urlencode($key));
-            echo "A(z) $key mező túl hosszú!";
-            exit();
         }
     } else {
         redirectWithError("EmptyField", "&field=".urlencode($key));
-        echo "A(z) $key mező nem lehet üres!";
-        exit();
     }
 }
 
 if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
     redirectWithError("InvalidEmail");
-    echo "Az e-mail cím formátuma nem megfelelő.";
-    exit();
 }
 
 if (strtotime($_POST['birth_date']) === false) {
     redirectWithError("InvalidBirthDate");
-    echo "A születési dátum formátuma nem megfelelő.";
-    exit();
 }
 
 if (strlen($_POST['password']) < 8) {
     redirectWithError("PasswordTooShort");
-    echo "A jelszó túl rövid.";
-    exit();
 }
 
 
@@ -67,8 +57,6 @@ require(__DIR__ . '/conn.php');
 
 if ($_POST['password'] != $_POST['password1']) {
     redirectWithError("PasswordsDontMatch");
-    echo ("A jelszavak nem egyeznek meg.");
-    exit();
 } else {
     $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
 }
@@ -80,8 +68,6 @@ $result = mysqli_stmt_get_result($stmt);
 
 if (mysqli_num_rows($result) > 0) {
     redirectWithError("EmailIsInUse");
-    echo "Az e-mail cím már foglalt.";
-    exit();
 }
 
 $sql = "SELECT * FROM users WHERE display_name=?";
@@ -91,8 +77,6 @@ $result = mysqli_stmt_get_result($stmt);
 
 if (mysqli_num_rows($result) > 0) {
     redirectWithError("DisplayNameIsInUse");
-    echo "A felhasználónév már foglalt.";
-    exit();
 }
 
 $sql = "INSERT INTO users 
@@ -109,7 +93,6 @@ $success = mysqli_stmt_execute($stmt, [
 ]);
 if (!$success) {
     redirectWithError("DatabaseError");
-    exit();
 }
 $_SESSION['email'] = $email;
 $_SESSION['id'] = mysqli_insert_id($conn);

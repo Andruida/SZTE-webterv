@@ -31,39 +31,27 @@ foreach ($_POST as $key => $value) {
     if (isset($value) && !empty($value)) {
         if (strlen($_POST[$key]) > 100) {
             redirectWithError("FieldTooLong", "&field=".urlencode($key));
-            echo "A(z) $key mező túl hosszú!";
-            exit();
         }
     } else {
         if (array_search($key, $notRequired)) continue;
         redirectWithError("EmptyField", "&field=".urlencode($key));
-        echo "A(z) $key mező nem lehet üres!";
-        exit();
     }
 }
 
 if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
     redirectWithError("InvalidEmail");
-    echo "Az e-mail cím formátuma nem megfelelő.";
-    exit();
 }
 
 if (strtotime($_POST['birth_date']) === false) {
     redirectWithError("InvalidBirthDate");
-    echo "A születési dátum formátuma nem megfelelő.";
-    exit();
 }
 
 if (isset($_POST['password']) && !empty($_POST['password'])) {
     if (strlen($_POST['password']) < 8) {
         redirectWithError("PasswordTooShort");
-        echo "A jelszó túl rövid!";
-        exit();
     }
     if ($_POST['password'] !== $_POST['password1']) {
         redirectWithError("PasswordsDontMatch");
-        echo "A két jelszó nem egyezik!";
-        exit();
     }
 }
 
@@ -80,18 +68,12 @@ if (isset($_FILES['picture_upload']) && !empty($_FILES['picture_upload']) && $_F
 
     if (!in_array($fileActualExt, ['png'])) {
         redirectWithError("InvalidFileFormat");
-        echo "A kép formátuma nem megfelelő!";
-        exit();
     }
     if ($fileError !== 0) { 
         redirectWithError("UploadError");
-        echo "Hiba történt a kép feltöltése során!";
-        exit();
     }
     if ($fileSize > 5242880) {
         redirectWithError("FileTooBig");
-        echo "A kép mérete túl nagy!";
-        exit();
     }
 
 
@@ -116,8 +98,6 @@ $result = mysqli_stmt_get_result($stmt);
 
 if (mysqli_num_rows($result) > 0) {
     redirectWithError("EmailIsInUse");
-    echo "Az e-mail cím már foglalt.";
-    exit();
 }
 
 $sql = "SELECT * FROM users WHERE display_name=? AND id != ?";
@@ -127,8 +107,6 @@ $result = mysqli_stmt_get_result($stmt);
 
 if (mysqli_num_rows($result) > 0) {
     redirectWithError("DisplayNameIsInUse");
-    echo "A felhasználónév már foglalt.";
-    exit();
 }
 
 if (!empty($_POST["password"])) {
@@ -150,7 +128,6 @@ if ($success) {
     exit();
 } else {
     redirectWithError("DatabaseError");
-    echo "Hiba történt a mentés során!";
 }
 
 ?>
