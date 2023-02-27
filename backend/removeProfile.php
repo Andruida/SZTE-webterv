@@ -13,6 +13,7 @@ $sql = "DELETE FROM users WHERE id =?";
 $stmt = mysqli_prepare($conn, $sql);
 $success = mysqli_stmt_execute($stmt, [$_SESSION['id']]);
 
+unlink(__DIR__."/../img/profile/".$_SESSION['id'].".png");
 session_destroy();
 header("Location: ../index.php");
 ?>

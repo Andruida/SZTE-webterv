@@ -20,6 +20,7 @@ if (!isset($_SESSION['id']) || empty($_SESSION['id'])) {
 
     <main>
         <article>
+        
             <h1> Időpontfoglalás</h1>
             <p>Üdvözöljük az időpontfoglalás oldalunkon! Az oldal segítségével kényelmesen foglalhat időpontot
                 szolgáltatásainkra.</p>
@@ -112,7 +113,7 @@ if (!isset($_SESSION['id']) || empty($_SESSION['id'])) {
             <fieldset>
                 <legend>Találkozz velünk!</legend>
                 <div style="margin-top: 0;">
-                    <label>Választott szolgáltatás:</label>
+                    <label class="required">Választott szolgáltatás:</label>
                     <input type="checkbox" id="szolgaltatas1" name="szolgaltatas[]" value="0"/>
                     <label for="szolgaltatas1"> Hangtechnikai szolgáltatások</label><br />
                     <input type="checkbox" id="szolgaltatas2" name="szolgaltatas[]" value="1" />
@@ -128,19 +129,28 @@ if (!isset($_SESSION['id']) || empty($_SESSION['id'])) {
                     <input type="checkbox" id="szolgaltatas7" name="szolgaltatas[]" value="6" />
                     <label for="szolgaltatas7"> Hangfájl többszintű rendszerezése</label><br />
                 </div>
-                <label for="typeSelect">Válassza ki a kapcsolatfelvétel módját:</label>
+                <label class="required" for="typeSelect">Válassza ki a kapcsolatfelvétel módját:</label>
                 <select id="typeSelect" name="typeSelect">
                     <option value="Személyes találkozó">Személyes találkozó</option>
                     <option value="Teams meet">Teams meet</option>
                     <option value="Google meet">Google meet</option>
                 </select>
-                <label>Melyik nap érsz rá?
-                    <input type="date" name="appointment booking date"></label>
-                <label>Milyen időpontban?
-                    <input type="time" name="time"></label>
-                <label>Írd be a telefonszámod:
-                    <input type="tel" pattern="+36 [0-9]{2} [0-9]{3} [0-9]{4}" name="mobileNumber"></label>
+
+                <label for="date" class="required">Melyik nap érsz rá?</label>
+                <input required id="date" type="date" name="date"><br />
+
+                <label for="time" class="required">Milyen időpontban?</label>
+                <input required id="time"type="time" name="time"><br />
+
+                <label for="phone" class="required">Írd be a telefonszámod:</label>
+                <input id="phone" required type="tel" pattern="+36 [0-9]{2} [0-9]{3} [0-9]{4}" name="mobileNumber"><br />
+
+                
                 <input type="submit" value="Foglalás" />
+                <?php if (isset($_GET["success"]) && $_GET["success"] == "1") { ?>
+                    <span id="success" class='ok'>Az időpontfoglalás sikeresen elküldve!</span>
+                <?php } ?>
+                
             </fieldset>
         </form>
     </main>

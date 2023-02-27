@@ -35,7 +35,7 @@ foreach ($row as $key => $value) {
 <!DOCTYPE html>
 <html>
 <?php
-$TITLE_SUFFIX = htmlspecialchars($_GET['projectName']);
+$TITLE_SUFFIX = "Profilom";
 include(__DIR__ . '/components/head.php');
 ?>
 

@@ -31,7 +31,7 @@ után jutnak a felhasználó tudtára (0/3 pont)
 - [ ] Objektumorientáltság megfelelő használata (0/2/4 pont)
 - [x] Sütik értelmes módon való használata (0/3 pont)
 
-### Megvalósított funkciók (max: 65 pont) (elérve: 35)
+### Megvalósított funkciók (max: 65 pont) (elérve: 51)
 #### Regisztráció - 13 pont (elérve: 13)
 - [x] Van működő regisztráció, a helyes regisztráció hatására az új felhasználó adatai eltárolódnak (0/2 pont)
 - [x] Minden kötelezően kitöltendő űrlapmező kitöltése szerveroldalon is ellenőrizve van (0/2
@@ -49,7 +49,7 @@ pont)
 - [x] A bejelentkezett felhasználó olyan (értelmes) oldal(aka)t is elér, amely(ek)et a nem bejelentkezett felhasználó nem (0/2 pont)
 - [x] A bejelentkezéshez kötött oldal(ak) nem elérhető(ek), csak a bejelentkezett felhasználóknak, különben átirányít a bejelentkezéshez (0/2 pont)
 - [x] Működő kijelentkezés (0/2 pont)
-#### Bejelentkezéshez kötött funkciók - 52 pont (elérve: 12)
+#### Bejelentkezéshez kötött funkciók - 52 pont (elérve: 28)
 - [x] A felhasználónak van lehetősége néhány adatának módosítására (pl. jelszó, születési dátum, bemutatkozás, stb.) (0/2/4 pont)
 - [x] A felhasználó tud profilképet feltölteni magának, ez a szerveren eltárolódik, le is tudja
 cserélni, illetve az oldalon meg is jelenik (0/2/4 pont)
@@ -57,13 +57,13 @@ cserélni, illetve az oldalon meg is jelenik (0/2/4 pont)
 pont)
 - [ ] A felhasználó meg tudja tekinteni más felhasználók profilját / publikus adatait (pl. felhasználónév, profilkép, leírás, stb.), továbbá beállítható, hogy milyen adatokat szeretnénk
 publikusan elérhetővé tenni (0/4/8 pont)
-- [] A felhasználó különböző interakcióba léphet a weboldallal, ennek következményei vannak,
+- [x] A felhasználó különböző interakcióba léphet a weboldallal, ennek következményei vannak,
 melyek újbóli bejelentkezés után is megmaradnak (pl. termékeket tud kosárba helyezni,
 filmeket értékelni 1-5 csillaggal (és ezeket látja is, hogy mennyire értékelte korábban),
 ismerősként vehet fel más felhasználókat, stb.) (0/4/8 pont)
 - [ ] A felhasználó tud üzenetet küldeni a többi felhasználónak (vagy néhány felhasználónak),
 akik ezt láthatják, és válaszolni tudnak neki (0/4/8 pont)
-- [] Meg vannak valósítva különböző jogosultsági szintek (pl. felhasználó, admin). Az egyes
+- [x] Meg vannak valósítva különböző jogosultsági szintek (pl. felhasználó, admin). Az egyes
 jogosultsági szinttel rendelkező felhasználók több funkciót elérnek (pl. az admin tud
 letiltani felhasználókat, látja a rendeléseket, stb.) (0/4/8 pont)
 - [ ] Egyéb, a felsoroltakban nem szereplő, megvalósított funkciók (0/4/8 pont)
@@ -75,4 +75,4 @@ pontszám felét érik. A rosszul működő funkciókra nem jár pont (pl. ha az
 is elküldésre kerülnek).
 
 
-### Összeg: 60 pont [30 pont/fő]
+### Összeg: 76 pont [38 pont/fő]

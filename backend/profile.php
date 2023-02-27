@@ -18,7 +18,7 @@ function redirectWithError($error, $extra = "") {
     exit();
 }
 
-$notRequired = ['introduction', 'password', 'password1', 'picture_upload'];
+$notRequired = ['password', 'password1', 'picture_upload'];
 
 foreach ($_POST as $key => $value) {
     if (isset($value)) {
@@ -27,7 +27,7 @@ foreach ($_POST as $key => $value) {
 }
 
 foreach ($_POST as $key => $value) {
-    
+    if ($key == "introduction") continue;
     if (isset($value) && !empty($value)) {
         if (strlen($_POST[$key]) > 100) {
             redirectWithError("FieldTooLong", "&field=".urlencode($key));
@@ -78,7 +78,7 @@ if (isset($_FILES['picture_upload']) && !empty($_FILES['picture_upload']) && $_F
 
 
     $fileNameNew = $_SESSION["id"].".".$fileActualExt;
-    $fileDestination = '../img/profile/'.$fileNameNew;
+    $fileDestination = __DIR__.'/../img/profile/'.$fileNameNew;
     move_uploaded_file($fileTmpName, $fileDestination);
 
 }

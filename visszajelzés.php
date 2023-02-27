@@ -28,17 +28,26 @@ include(__DIR__.'/components/head.php');
                 <li>Milyen véleménnyel van az oldal dizájnjáról?</li>
             </ul>
         </article>
-        <form>
+        <form method="post" action="backend/feedback.php">
             <fieldset>
                 <legend>Visszajelzés</legend>
-                <label>Email címed: <input type="email" /></label>
-                <label>Név:
-                    <input type="text" /></label>
-                <label>Részletes és kifejtett építő jellegű véleménye:
-                    <textarea></textarea></label>
-                <label><input type="checkbox" /> Belegyezek, hogy harmadik fél kezelje az adataimat.</label>
+
+                <label for="email">Email címed:</label>
+                <input required id="email" maxlength="100" type="email" name="email" /><br />
+
+                <label for="name">Név:</label>
+                <input required id="name" maxlength="100" type="text" name="name" /><br />
+
+                <label for="feedback">Részletes és kifejtett építő jellegű véleménye:</label>
+                <textarea required id="feedback" name="feedback"></textarea><br />
+
+                <label class="required"><input required type="checkbox" /> Belegyezek, hogy harmadik fél kezelje az adataimat.</label>
+
                 <input type="submit" value="Küldés" />
                 <input type="reset" value="Vissza mindent" />
+                <?php if (isset($_GET["success"]) && $_GET["success"] == "1") { ?>
+                    <span id="success" class='ok'>A visszajelzés sikeresen elküldve!</span>
+                <?php } ?>
             </fieldset>
         </form>
     </main>

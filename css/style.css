@@ -81,8 +81,9 @@ label:not([for]) {
   margin-bottom: 12px;
 }
 
-input:read-only:not(input[type="file"]), textarea:read-only {
-  border: 1px solid #EEE!important;
+input:read-only:not(input[type="file"]),
+textarea:read-only {
+  border: 1px solid #EEE !important;
 }
 
 button,
@@ -125,6 +126,7 @@ textarea {
   margin-top: 0.2em;
   min-width: 300px;
 }
+
 input+span.error {
   color: red;
   font-size: 0.8em;
@@ -136,6 +138,8 @@ input:has(+span.error) {
   border-color: red;
 }
 
+label.required::after,
+label:has(+textarea:required)::after,
 label:has(+input:required)::after {
   content: " *";
   color: red;
@@ -173,14 +177,45 @@ fieldset {
   padding: 1.5rem;
 }
 
-.stars span:hover {
-  color: #daa301;
+.rate {
+  display: inline-block;
+  height: 40px;
+  padding: 0 10px;
 }
 
-.stars {
-  cursor: default;
-  width: fit-content;
-  padding-right: 4em;
+.rate:not(:checked)>input {
+  display: none;
+}
+
+.rate:not(:checked)>label {
+  float: right;
+  width: 1em;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 35px;
+  color: #ccc;
+}
+
+.rate:not(:checked)>label:before {
+  content: '★ ';
+}
+
+.rate>input:checked~label {
+  color: #ffc700;
+}
+
+.rate:not(:checked)>label:hover,
+.rate:not(:checked)>label:hover~label {
+  color: #deb217;
+}
+
+.rate>input:checked+label:hover,
+.rate>input:checked+label:hover~label,
+.rate>input:checked~label:hover,
+.rate>input:checked~label:hover~label,
+.rate>label:hover~input:checked~label {
+  color: #c59b08;
 }
 
 article {
@@ -364,11 +399,13 @@ hr {
     grid-row: 4;
   }
 }
+
 .profileData {
   display: grid;
   margin: 0;
   padding: 0;
 }
+
 .profileData div {
   margin: 0;
   padding: 0;
@@ -394,4 +431,8 @@ hr {
   display: block;
   max-width: 80%;
   margin-bottom: 10px;
+}
+
+.ok {
+  color: green;
 }
