@@ -65,42 +65,77 @@ include(__DIR__ . '/components/head.php');
             ?>
             <label class="required" for="display_name">Felhasználónév:</label>
             <input required type="text" maxlength="100" id="display_name" name="display_name" value="<?= ($faultyRegister ? $_GET["display_name"] : "") ?>" />
+            <?php if ($faultyRegister && $_GET["error"] == "EmptyField" && isset($_GET["field"]) && $_GET["field"] == "display_name") { ?>
+                <span class="error">Nem maradhat üresen!</span>
+            <?php } ?>
+            <?php if ($faultyRegister && $_GET["error"] == "FieldTooLong" && isset($_GET["field"]) && $_GET["field"] == "display_name") { ?>
+                <span class="error">Legfeljebb 100 karakter hosszú lehet!</span>
+            <?php } ?>
             <?php if ($faultyRegister && $_GET["error"] == "DisplayNameIsInUse") { ?>
                 <span class="error">Ez a felhasználónév már foglalt!</span>
             <?php } ?><br />
 
             <label class="required" for="email">E-mail cím:</label>
-            <input required type="email" id="email" name="email" value="<?= ($faultyRegister ? $_GET["email"] : "") ?>">
+            <input required type="email" id="email" name="email" maxlength="100" value="<?= ($faultyRegister ? $_GET["email"] : "") ?>">
+            <?php if ($faultyRegister && $_GET["error"] == "EmptyField" && isset($_GET["field"]) && $_GET["field"] == "email") { ?>
+                <span class="error">Nem maradhat üresen!</span>
+            <?php } ?>
+            <?php if ($faultyRegister && $_GET["error"] == "FieldTooLong" && isset($_GET["field"]) && $_GET["field"] == "email") { ?>
+                <span class="error">Legfeljebb 100 karakter hosszú lehet!</span>
+            <?php } ?>
+            <?php if ($faultyRegister && $_GET["error"] == "InvalidEmail") { ?>
+                <span class="error">Ez az e-mail cím érvénytelen!</span>
+            <?php } ?>
             <?php if ($faultyRegister && $_GET["error"] == "EmailIsInUse") { ?>
                 <span class="error">Ez az e-mail cím már foglalt!</span>
             <?php } ?><br />
 
             <label class="required" for="password">Jelszó:</label>
             <input required placeholder="Legalább 8 karakter" minlength="8" maxlength="100" type="password" id="password" name="password" />
+            <?php if ($faultyRegister && $_GET["error"] == "EmptyField" && isset($_GET["field"]) && $_GET["field"] == "password") { ?>
+                <span class="error">Nem maradhat üresen!</span>
+            <?php } ?>
+            <?php if ($faultyRegister && $_GET["error"] == "FieldTooLong" && isset($_GET["field"]) && $_GET["field"] == "password") { ?>
+                <span class="error">Legfeljebb 100 karakter hosszú lehet!</span>
+            <?php } ?>
             <?php if ($faultyRegister && $_GET["error"] == "PasswordTooShort") { ?>
                 <span class="error">A jelszó túl rövid (legyen legalább 8 karakter)!</span>
             <?php } ?><br />
 
             <label class="required" for="password1">Jelszó mégegyszer:</label>
             <input required placeholder="Legalább 8 karakter" minlength="8" maxlength="100" type="password" id="password1" name="password1" />
+            <?php if ($faultyRegister && $_GET["error"] == "EmptyField" && isset($_GET["field"]) && $_GET["field"] == "password1") { ?>
+                <span class="error">Nem maradhat üresen!</span>
+            <?php } ?>
+            <?php if ($faultyRegister && $_GET["error"] == "FieldTooLong" && isset($_GET["field"]) && $_GET["field"] == "password1") { ?>
+                <span class="error">Legfeljebb 100 karakter hosszú lehet!</span>
+            <?php } ?>
             <?php if ($faultyRegister && $_GET["error"] == "PasswordsDontMatch") { ?>
                 <span class="error">A jelszavak nem egyeznek!</span>
             <?php } ?><br />
 
             <label class="required" for="birth_date">Születési dátum:</label>
             <input required type="date" id="birth_date" name="birth_date" value="<?= ($faultyRegister ? $_GET["birth_date"] : "") ?>" />
+            <?php if ($faultyRegister && $_GET["error"] == "EmptyField" && isset($_GET["field"]) && $_GET["field"] == "birth_date") { ?>
+                <span class="error">Nem maradhat üresen!</span>
+            <?php } ?>
+            <?php if ($faultyRegister && $_GET["error"] == "FieldTooLong" && isset($_GET["field"]) && $_GET["field"] == "birth_date") { ?>
+                <span class="error">Legfeljebb 100 karakter hosszú lehet! (Hogy?)</span>
+            <?php } ?>
             <?php if ($faultyRegister && $_GET["error"] == "InvalidBirthDate") { ?>
                 <span class="error">Érvénytelen születési dátum!</span>
             <?php } ?><br />
 
             <label for="introduction">Bemutatkozás:</label>
-            <textarea id="introduction" name="introduction" rows="3">
-                <?= ($faultyRegister ? $_GET["introduction"] : "") ?>
-            </textarea><br />
+            <textarea id="introduction" name="introduction" rows="3"><?= ($faultyRegister ? $_GET["introduction"] : "") ?></textarea><br />
 
             <input type="submit" value="Regisztráció">
         </fieldset>
     </form>
+
+    <?php if ($faultyRegister && $_GET["error"] == "DatabaseError") { ?>
+        <script>alert("Adatbázis hiba! Kérlek próbáld újra!")</script>
+    <?php } ?>
 
     <?php include(__DIR__ . "/components/footer.php"); ?>
 </body>
