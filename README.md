@@ -13,7 +13,7 @@
 más dizájnnal jelenik meg) (0/1 pont)
 - [x] A menü interaktív: a kurzor rávitelére változik a menüpont kinézete (0/1 pont)
 - [x] A menü / oldal fejléc az oldal görgetésénél is látszik (0/1 pont)
-#### Felhasználói élmény - 17 pont (elérve: 14)
+#### Felhasználói élmény - 17 pont (elérve: 9)
 - [x] Az elkészített weboldalak logikusan vannak felépítve, egyértelmű, hogy milyen műveleteket lehet csinálni, hogyan, egyértelműen jelezve van minden szükséges információ (0/1/3
 pont)
 - [x] Az oldalakon minden információ jól olvasható (pl. nem fekete háttéren sötét betűk), nem
@@ -26,7 +26,7 @@ pont)
 adott input mezőre nézve (pl. a jelszó legalább 8 karakter), ezek nem az űrlap elküldése
 után jutnak a felhasználó tudtára (0/3 pont)
 - [ ] A megvalósított funkciók használata kényelmes (0/2/5 pont)
-Technikai elemek - 9 pont
+#### Technikai elemek - 9 pont (elérve: 5)
 - [x] GET paraméterek megfelelő használata (0/2 pont)
 - [ ] Objektumorientáltság megfelelő használata (0/2/4 pont)
 - [x] Sütik értelmes módon való használata (0/3 pont)
