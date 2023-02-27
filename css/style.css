@@ -136,7 +136,7 @@ input:has(+span.error) {
   border-color: red;
 }
 
-label.required::after {
+label:has(+input:required)::after {
   content: " *";
   color: red;
 }
