@@ -5,8 +5,13 @@
 <?php
 $TITLE_SUFFIX = 'Csevegjünk';
 include(__DIR__.'/components/head.php'); 
-?>
+session_start();
 
+if (!isset($_SESSION['id']) || empty($_SESSION['id'])) {
+    header('Location: bejelentkezés.php');
+    exit();
+}
+?>
 <body>
     <?php 
     $ACTIVE = 'Csevegjünk!';
@@ -103,41 +108,38 @@ include(__DIR__.'/components/head.php');
                 </table>
             </div>
         </article>
-        <form>
+        <form action="backend/orders.php" method="post">
             <fieldset>
                 <legend>Találkozz velünk!</legend>
                 <div style="margin-top: 0;">
                     <label>Választott szolgáltatás:</label>
-                    <input type="checkbox" id="szolgaltatas1" name="szolgaltatas" />
+                    <input type="checkbox" id="szolgaltatas1" name="szolgaltatas[]" value="0"/>
                     <label for="szolgaltatas1"> Hangtechnikai szolgáltatások</label><br />
-                    <input type="checkbox" id="szolgaltatas2" name="szolgaltatas" />
+                    <input type="checkbox" id="szolgaltatas2" name="szolgaltatas[]" value="1" />
                     <label for="szolgaltatas2"> Hang újra felvevő szolgáltatások</label><br />
-                    <input type="checkbox" id="szolgaltatas3" name="szolgaltatas" />
+                    <input type="checkbox" id="szolgaltatas3" name="szolgaltatas[]" value="2" />
                     <label for="szolgaltatas3"> Hangfájl transzkódolása</label><br />
-                    <input type="checkbox" id="szolgaltatas4" name="szolgaltatas" />
+                    <input type="checkbox" id="szolgaltatas4" name="szolgaltatas[]" value="3"/>
                     <label for="szolgaltatas4"> Hangfájl minőség javítása</label><br />
-                    <input type="checkbox" id="szolgaltatas5" name="szolgaltatas" />
+                    <input type="checkbox" id="szolgaltatas5" name="szolgaltatas[]" value="4"/>
                     <label for="szolgaltatas5"> Hangfájl szerkesztése</label><br />
-                    <input type="checkbox" id="szolgaltatas6" name="szolgaltatas" />
+                    <input type="checkbox" id="szolgaltatas6" name="szolgaltatas[]" value="5"/>
                     <label for="szolgaltatas6"> Hangfájl transzkódolása</label><br />
-                    <input type="checkbox" id="szolgaltatas7" name="szolgaltatas" />
+                    <input type="checkbox" id="szolgaltatas7" name="szolgaltatas[]" value="6" />
                     <label for="szolgaltatas7"> Hangfájl többszintű rendszerezése</label><br />
                 </div>
                 <label for="typeSelect">Válassza ki a kapcsolatfelvétel módját:</label>
-                <select id="typeSelect">
+                <select id="typeSelect" name="typeSelect">
                     <option value="Személyes találkozó">Személyes találkozó</option>
                     <option value="Teams meet">Teams meet</option>
                     <option value="Google meet">Google meet</option>
                 </select>
                 <label>Melyik nap érsz rá?
                     <input type="date" name="appointment booking date"></label>
-                <label>Milyen időpont?
-                    <input type="time"></label>
-                <label>Email címed: <input type="email" /></label>
-                <label>Név:
-                    <input type="text" /></label>
+                <label>Milyen időpontban?
+                    <input type="time" name="time"></label>
                 <label>Írd be a telefonszámod:
-                    <input type="tel" pattern="+36 [0-9]{2} [0-9]{3} [0-9]{4}"></label>
+                    <input type="tel" pattern="+36 [0-9]{2} [0-9]{3} [0-9]{4}" name="mobileNumber"></label>
                 <input type="submit" value="Foglalás" />
             </fieldset>
         </form>

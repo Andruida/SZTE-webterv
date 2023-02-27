@@ -1,15 +1,16 @@
 <?php
 
-session_start();
+if (!isset($_SESSION))
+    session_start();
 
 $_pages = [
     "Kezdőlap" => "index.php",
     "Projektjeim" => "projektek.php",
     "Javaslatok" => "visszajelzes.php",
-    "Csevegjünk!" => "csevegj%C3%BCnk.php",
 ];
 
 if (isset($_SESSION["id"]) && !empty($_SESSION["id"])) {
+    $_pages["Csevegjünk!"] = urlencode("csevegjünk.php");
     $_pages["Profilom"] = "profil.php";
     $_pages["Kijelentkezés"] = "backend/logout.php";
 } else {

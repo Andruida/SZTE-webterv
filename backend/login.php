@@ -28,7 +28,7 @@ if (isset($email) && filter_var($email, FILTER_VALIDATE_EMAIL)) {
     exit();
 }
 
-include(__DIR__.'/conn.php');
+require(__DIR__.'/conn.php');
 
 $sql = "SELECT * FROM users WHERE email = ?";
 

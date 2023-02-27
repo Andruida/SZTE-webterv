@@ -88,7 +88,10 @@ include(__DIR__ . '/components/head.php');
             <?php } ?><br />
 
             <label class="required" for="birth_date">Születési dátum:</label>
-            <input required type="date" id="birth_date" name="birth_date" value="<?= ($faultyRegister ? $_GET["birth_date"] : "") ?>" /><br />
+            <input required type="date" id="birth_date" name="birth_date" value="<?= ($faultyRegister ? $_GET["birth_date"] : "") ?>" />
+            <?php if ($faultyRegister && $_GET["error"] == "InvalidBirthDate") { ?>
+                <span class="error">Érvénytelen születési dátum!</span>
+            <?php } ?><br />
 
             <label for="introduction">Bemutatkozás:</label>
             <textarea id="introduction" name="introduction" rows="3">

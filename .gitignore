@@ -1,2 +1,4 @@
 
 *.log
+img/profile/*.png
+!default.png
