@@ -1,9 +1,9 @@
 $(document).ready(() => {
     $("input[name=\"rating\"]").on("change", (e) => {
         const rating = e.target.value
-        const projectName = window.location.search.split("=")[1]
+        const projectId = window.location.search.split("=")[1]
         $.post("backend/rating.php", {
-            projectName: projectName,
+            projectId: projectId,
             rating: rating
         })
     })
