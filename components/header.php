@@ -12,7 +12,11 @@ $_pages = [
 if (isset($_SESSION["id"]) && !empty($_SESSION["id"])) {
     $_pages["Csevegjünk!"] = urlencode("csevegjünk.php");
     $_pages["Profilom"] = "profil.php";
+    if (isset($_SESSION["admin"]) && !empty($_SESSION["admin"])) {
+        $_pages["Rendelések"] = urlencode("rendelések.php");
+    }
     $_pages["Kijelentkezés"] = "backend/logout.php";
+    
 } else {
     $_pages["Bejelentkezés"] = urlencode("bejelentkezés.php");
 }

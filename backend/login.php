@@ -48,6 +48,7 @@ $row = mysqli_fetch_assoc($result);
 if (password_verify($password, $row['password'])) {
     $_SESSION['email'] = $email;
     $_SESSION['id'] = $row["id"];
+    $_SESSION['admin'] = ($row["is_admin"] === 1);
     
     header("Location: ../profil.php");
     echo "Sikeres bejelentkezés!";
