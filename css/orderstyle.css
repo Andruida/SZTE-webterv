@@ -15,6 +15,12 @@ table th, table td {
 	border: 1px solid #888;
 	border-width: 0 1px 1px;
 }
+
+table {
+	border: 1px solid #888;
+	border-top: 2px solid #888;
+	width: auto;
+}
 /*responsive table*/
 @media screen and (max-width: 550px) {
 	/*put each field on its own line and align text to the right
