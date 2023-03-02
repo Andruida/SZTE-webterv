@@ -1,0 +1,79 @@
+.rate {
+  display: inline-block;
+  height: 40px;
+  padding: 0 10px;
+  border: none;
+}
+
+.rate:not(:checked)>input {
+  display: none;
+}
+
+.rate:not(:checked)>label {
+  float: right;
+  width: 1em;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 35px;
+  color: #ccc;
+}
+
+.rate:not(:checked)>label:before {
+  content: '★ ';
+}
+
+.rate>input:checked~label {
+  color: #ffc700;
+}
+
+.rate:not(:checked)>label:hover,
+.rate:not(:checked)>label:hover~label {
+  color: #deb217;
+}
+
+.rate>input:checked+label:hover,
+.rate>input:checked+label:hover~label,
+.rate>input:checked~label:hover,
+.rate>input:checked~label:hover~label,
+.rate>label:hover~input:checked~label {
+  color: #c59b08;
+}
+
+.readOnlyRating {
+  display: inline-block;
+  height: 40px;
+  padding: 0 10px;
+  border: none;
+}
+
+.readOnlyRating>.checked::before {
+  color: #ffc700;
+}
+
+.readOnlyRating>*::before {
+  content: "★ ";
+}
+
+.readOnlyRating>* {
+  float: right;
+  width: 1em;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 35px;
+  color: #ccc;
+}
+
+.ratingBox {
+  display: grid;
+  width: fit-content;
+}
+
+.ratingBox>.borderless {
+  grid-column: 1;
+}
+
+.ratingBox>.rate,
+.ratingBox>.readOnlyRating {
+  grid-column: 2;
+}

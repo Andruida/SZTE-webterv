@@ -4,7 +4,8 @@ $(document).ready(() => {
         const projectId = window.location.search.split("=")[1]
         $.post("backend/rating.php", {
             projectId: projectId,
-            rating: rating
+            rating: rating,
+            success: () => location.reload()
         })
     })
 })

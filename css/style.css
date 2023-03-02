@@ -177,47 +177,6 @@ fieldset {
   padding: 1.5rem;
 }
 
-.rate {
-  display: inline-block;
-  height: 40px;
-  padding: 0 10px;
-}
-
-.rate:not(:checked)>input {
-  display: none;
-}
-
-.rate:not(:checked)>label {
-  float: right;
-  width: 1em;
-  overflow: hidden;
-  white-space: nowrap;
-  cursor: pointer;
-  font-size: 35px;
-  color: #ccc;
-}
-
-.rate:not(:checked)>label:before {
-  content: '★ ';
-}
-
-.rate>input:checked~label {
-  color: #ffc700;
-}
-
-.rate:not(:checked)>label:hover,
-.rate:not(:checked)>label:hover~label {
-  color: #deb217;
-}
-
-.rate>input:checked+label:hover,
-.rate>input:checked+label:hover~label,
-.rate>input:checked~label:hover,
-.rate>input:checked~label:hover~label,
-.rate>label:hover~input:checked~label {
-  color: #c59b08;
-}
-
 article {
   margin: 20px 0;
 }
@@ -333,7 +292,7 @@ hr {
   .card>img {
     display: inline-block;
     grid-row-start: 1;
-    grid-row-end: 3;
+    grid-row-end: 4;
     grid-column: 1;
     max-width: 10rem;
   }
@@ -342,7 +301,7 @@ hr {
   .card>p {
     padding-left: 1em;
     grid-column-start: 2;
-    grid-column-end: 6;
+    grid-column-end: 5;
     display: inline-block;
   }
 
@@ -356,8 +315,9 @@ hr {
     text-align: left;
   }
 
-  .card>audio {
-    grid-column: 2;
+  .card>.readOnlyRating {
+    grid-column-start: 2;
+    grid-column-end: 5;
     grid-row: 3;
   }
 }
@@ -391,7 +351,7 @@ hr {
     grid-row: 2;
   }
 
-  .card>audio {
+  .card>.readOnlyRating {
     grid-row: 4;
   }
 }
