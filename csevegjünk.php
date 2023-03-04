@@ -125,7 +125,7 @@ if (!isset($_SESSION['id']) || empty($_SESSION['id'])) {
                     <input type="checkbox" id="szolgaltatas5" name="szolgaltatas[]" value="4"/>
                     <label for="szolgaltatas5"> Hangfájl szerkesztése</label><br />
                     <input type="checkbox" id="szolgaltatas6" name="szolgaltatas[]" value="5"/>
-                    <label for="szolgaltatas6"> Hangfájl transzkódolása</label><br />
+                    <label for="szolgaltatas6"> Hangfájl tömörítése</label><br />
                     <input type="checkbox" id="szolgaltatas7" name="szolgaltatas[]" value="6" />
                     <label for="szolgaltatas7"> Hangfájl többszintű rendszerezése</label><br />
                 </div>

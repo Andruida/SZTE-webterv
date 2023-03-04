@@ -1,5 +1,10 @@
 <?php
 
+if ($_SERVER['REQUEST_METHOD'] !== "POST") {
+    http_response_code(405);
+    exit();
+}
+
 session_start();
 
 if (isset($_SESSION['id']) && !empty($_SESSION['id'])) {
@@ -56,3 +61,4 @@ if (password_verify($password, $row['password'])) {
     header("Location: ../bejelentkezés.php?form=login&error=WrongPassword&email=" . urlencode($email));
     echo "Hibás jelszó!";
 }
+?>

@@ -1,5 +1,10 @@
 <?php
 
+if ($_SERVER['REQUEST_METHOD'] !== "POST") {
+    http_response_code(405);
+    exit();
+}
+
 session_start();
 
 if (!isset($_SESSION['id']) || empty($_SESSION['id'])) {
@@ -62,9 +67,9 @@ $success = mysqli_stmt_execute($stmt, [
     $mobileNumber]);
 
 if ($success) {
-        header("Location: ../csevegjünk.php?success=$success#success");
-        exit();
-    } else {
-        redirectWithError("DatabaseError");
-    }
+    header("Location: ../csevegjünk.php?success=$success#success");
+    exit();
+} else {
+    redirectWithError("DatabaseError");
+}
 ?>
