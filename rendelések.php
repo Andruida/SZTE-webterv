@@ -13,6 +13,23 @@ if (!isset($_SESSION['admin']) || empty($_SESSION['admin'])) {
     header('Location: profil.php');
     exit();
 }
+
+$servicesToPickFrom = [
+    "Hangtechnikai szolgáltatások",
+    "Hang újra felvevő szolgáltatások",
+    "Hangfájl transzkódolása",
+    "Hangfájl minőség javítása",
+    "Hangfájl szerkesztése",
+    "Hangfájl tömörítése",
+    "Hangfájl többszintű rendszerezése"
+];
+
+$possibleWaysOfContact = [
+    "PERSONAL" => "Személyes találkozó",
+    "TEAMS" => "Microsoft Teams",
+    "MEET" => "Google Meet"
+];
+
 ?>
 <!DOCTYPE html>
 <html lang="hu">
@@ -31,8 +48,7 @@ include(__DIR__ . '/components/head.php');
         <table class="order_table">
             <thead>
             <tr>
-                    <th>Ügyfél felhasználóneve</th>
-                    <th>Ügyfél email címe</th>
+                    <th>Ügyfél elérhetősége</th>
                     <th>Ügyfél telefonszáma</th>
                     <th>Igényelt szolgáltatás</th>
                     <th>Találkozó módja</th>
@@ -41,14 +57,28 @@ include(__DIR__ . '/components/head.php');
             </thead>
             <tbody>
                 
-                <?php while ($row = mysqli_fetch_assoc($results)) { ?>
+                <?php while ($row = mysqli_fetch_assoc($results)) { 
+                    foreach ($row as $key => $value) {
+                        $row[$key] = htmlspecialchars($value);
+                    }
+                    $services = [];
+                    foreach ($servicesToPickFrom as $i=>$service) {
+                        if ($row['services'] & (1 << $i)) {
+                            $services[] = $service;
+                        }
+                    }
+                    $row['services_rendered'] = implode('</li><li> ', $services);
+                    ?>
 
                     <tr>
-                        <td><?= $row['display_name'] ?></td>
-                        <td><?= $row['email'] ?></td>
+                        <td><a href="mailto:<?= $row['email'] ?>" title="<?= $row['email'] ?>"><?= $row['display_name'] ?></a></td>
                         <td><?= $row['phone'] ?></td>
-                        <td><?= $row['services'] ?></td>
-                        <td><?= $row['way_of_contact'] ?></td>
+                        <td>
+                            <?php if (count($services) > 0) { ?>
+                            <ul><li><?= $row['services_rendered'] ?></li></ul>
+                            <?php } ?>
+                        </td>
+                        <td><?= $possibleWaysOfContact[$row['way_of_contact']] ?></td>
                         <td><?= $row['datetime'] ?></td>
 
                     </tr>
