@@ -25,10 +25,12 @@ $bookingDate=$_POST['date'];
 $bookingTime=$_POST['time'];
 $mobileNumber=$_POST['mobileNumber'];
 $typeSelect_smt="";
+
 function redirectWithError($error, $extra = "") {
+    global $szolgaltatas_bitmap;
     header(
         "Location: ../profil.php?error=$error".
-        "&szolgaltatas=".urlencode($_POST['szolgaltatas']).
+        "&szolgaltatas=".urlencode($szolgaltatas_bitmap).
         "&typeSelect=".urlencode($_POST['typeSelect']).
         "&date=".urlencode($_POST['date']).
         "&mobileNumber=".urlencode($_POST['mobileNumber']).
