@@ -1,5 +1,6 @@
 <?php
 
+// kérés típusának ellenőrzése
 if ($_SERVER['REQUEST_METHOD'] !== "POST") {
     http_response_code(405);
     exit();
@@ -7,6 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] !== "POST") {
 
 session_start();
 
+// ha nincs bejelentkezve, akkor átirányítás a bejelentkezési oldalra
 if (!isset($_SESSION['id']) || empty($_SESSION['id'])) {
     header("Location: ../bejelentkezés.php");
     exit();
@@ -23,14 +25,26 @@ function redirectWithError($error, $extra = "") {
     exit();
 }
 
-$notRequired = ['password', 'password1', 'picture_upload'];
+$notRequired = ['password', 'password1', 'picture_upload', 'introduction'];
+$required = ['email', 'display_name', 'birth_date'];
 
+// tömb mezők ellenőrzése
 foreach ($_POST as $key => $value) {
-    if (isset($value)) {
+    if (isset($value) && !is_array($value)) {
         $_POST[$key] = trim($value);
+    } else {
+        unset($_POST[$key]);
     }
 }
 
+// kötelező mezők ellenőrzése
+foreach ($required as $key) {
+    if (!isset($_POST[$key]) || empty($_POST[$key])) {
+        redirectWithError("EmptyField", "&field=".urlencode($key));
+    }
+}
+
+// mezők hosszának ellenőrzése
 foreach ($_POST as $key => $value) {
     if ($key == "introduction") continue;
     if (isset($value) && !empty($value)) {
@@ -43,23 +57,28 @@ foreach ($_POST as $key => $value) {
     }
 }
 
+// email cím ellenőrzése
 if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
     redirectWithError("InvalidEmail");
 }
 
+// dátum ellenőrzése
 if (strtotime($_POST['birth_date']) === false) {
     redirectWithError("InvalidBirthDate");
 }
 
+// jelszó erősségének ellenőrzése
 if (isset($_POST['password']) && !empty($_POST['password'])) {
     if (strlen($_POST['password']) < 8) {
         redirectWithError("PasswordTooShort");
     }
+    // jelszavak egyezésének ellenőrzése
     if ($_POST['password'] !== $_POST['password1']) {
         redirectWithError("PasswordsDontMatch");
     }
 }
 
+// kép feltöltésének kezelése
 if (isset($_FILES['picture_upload']) && !empty($_FILES['picture_upload']) && $_FILES['picture_upload']['size'] !== 0) {
     $file = $_FILES['picture_upload'];
     $fileName = $file['name'];
@@ -95,6 +114,7 @@ $email = $_POST['email'];
 $birth_date = $_POST['birth_date'];
 $introduction = $_POST['introduction'];
 
+// email cím használhatóságának ellenőrzése
 
 $sql = "SELECT * FROM users WHERE email=? AND id != ?";
 $stmt = mysqli_prepare($conn, $sql);
@@ -104,6 +124,8 @@ $result = mysqli_stmt_get_result($stmt);
 if (mysqli_num_rows($result) > 0) {
     redirectWithError("EmailIsInUse");
 }
+
+// felhasználónév használhatóságának ellenőrzése
 
 $sql = "SELECT * FROM users WHERE display_name=? AND id != ?";
 $stmt = mysqli_prepare($conn, $sql);

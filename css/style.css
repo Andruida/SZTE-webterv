@@ -127,15 +127,26 @@ textarea {
   min-width: 300px;
 }
 
-input+span.error {
+input+span.error,
+select+span.error,
+textarea+span.error,
+.input+span.error {
   color: red;
   font-size: 0.8em;
   display: block;
   margin-top: 0.4em;
 }
 
-input:has(+span.error) {
+input:has(+span.error),
+.input:has(+span.error),
+select:has(+span.error),
+textarea:has(+span.error) {
   border-color: red;
+}
+
+select:has(+span.error),
+.input:has(+span.error) {
+  margin-bottom: 0;
 }
 
 label.required::after,

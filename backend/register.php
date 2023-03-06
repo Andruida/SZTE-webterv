@@ -1,5 +1,7 @@
 <?php
 
+
+// kérés típusának ellenőrzése
 if ($_SERVER['REQUEST_METHOD'] !== "POST") {
     http_response_code(405);
     exit();
@@ -7,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] !== "POST") {
 
 session_start();
 
-
+// ha be van jelentkezve, akkor átirányítás a főoldalra
 if (isset($_SESSION['id']) && !empty($_SESSION['id'])) {
     header('Location: ../index.php');
     exit();
@@ -24,11 +26,16 @@ function redirectWithError($error, $extra = "") {
     exit();
 }
 
+// tömb mezők ellenőrzése
 foreach ($_POST as $key => $value) {
-    if (isset($value)) {
+    if (isset($value) && !is_array($value)) {
         $_POST[$key] = trim($value);
+    } else {
+        unset($_POST[$key]);
     }
 }
+
+// mezők hosszának ellenőrzése
 foreach ($_POST as $key => $value) {
     if ($key == 'introduction') continue;
     if (isset($value) && !empty($value)) {
@@ -40,14 +47,25 @@ foreach ($_POST as $key => $value) {
     }
 }
 
+// kötelező mezők ellenőrzése
+$required = ["email", "display_name", "birth_date", "password", "password1"];
+foreach ($required as $key) {
+    if (!isset($_POST[$key]) || empty($_POST[$key])) {
+        redirectWithError("EmptyField", "&field=".urlencode($key));
+    }
+}
+
+// email cím ellenőrzése
 if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
     redirectWithError("InvalidEmail");
 }
 
+// születési dátum ellenőrzése
 if (strtotime($_POST['birth_date']) === false) {
     redirectWithError("InvalidBirthDate");
 }
 
+// jelszó hosszának ellenőrzése
 if (strlen($_POST['password']) < 8) {
     redirectWithError("PasswordTooShort");
 }
@@ -59,12 +77,14 @@ $email = $_POST['email'];
 require(__DIR__ . '/conn.php');
 
 
-
+// ismételt jelszó ellenőrzése
 if ($_POST['password'] != $_POST['password1']) {
     redirectWithError("PasswordsDontMatch");
 } else {
     $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
 }
+
+// email cím használatának ellenőrzése
 
 $sql = "SELECT * FROM users WHERE email=?";
 $stmt = mysqli_prepare($conn, $sql);
@@ -74,6 +94,8 @@ $result = mysqli_stmt_get_result($stmt);
 if (mysqli_num_rows($result) > 0) {
     redirectWithError("EmailIsInUse");
 }
+
+// felhasználónév használatának ellenőrzése
 
 $sql = "SELECT * FROM users WHERE display_name=?";
 $stmt = mysqli_prepare($conn, $sql);

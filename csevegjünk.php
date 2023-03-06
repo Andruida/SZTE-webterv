@@ -123,10 +123,10 @@ include(__DIR__.'/components/head.php');
                 </table>
             </div>
         </article>
-        <form action="backend/orders.php" method="post">
+        <form action="backend/orders.php" method="post" id="contact-us">
             <fieldset>
                 <legend>Találkozz velünk!</legend>
-                <div style="margin-top: 0;">
+                <div class="input" style="margin-top: 0;">
                     <label class="required">Választott szolgáltatás:</label>
                     <input type="checkbox" id="szolgaltatas1" name="szolgaltatas[]" value="0"
                         <?= isServiceSelected(0) ? "checked" : "" ?> />
@@ -150,6 +150,11 @@ include(__DIR__.'/components/head.php');
                         <?= isServiceSelected(6) ? "checked" : "" ?> />
                     <label for="szolgaltatas7"> Hangfájl többszintű rendszerezése</label><br />
                 </div>
+                <?php if (!empty($_GET["error"]) && $_GET["error"] == "EmptyField" && 
+                            isset($_GET["field"]) && $_GET["field"] == "szolgaltatas") { ?>
+                    <span class="error">Legalább egy kiválasztása kötelező!</span><br />
+                <?php } ?>
+
                 <label class="required" for="typeSelect">Válassza ki a kapcsolatfelvétel módját:</label>
                 <select id="typeSelect" name="typeSelect">
                     <option value="Személyes találkozó"
@@ -168,19 +173,48 @@ include(__DIR__.'/components/head.php');
                         Google meet
                     </option>
                 </select>
+                <?php if (!empty($_GET["error"]) && $_GET["error"] == "TypeSelectError") { ?>
+                    <span class="error">A kiválasztott opció nem elfogadott! (Hogy??)</span><br />
+                <?php } ?>
+                <?php if (!empty($_GET["error"]) && $_GET["error"] == "EmptyField" && 
+                            isset($_GET["field"]) && $_GET["field"] == "typeSelect") { ?>
+                    <span class="error">Legalább egy kiválasztása kötelező!</span><br />
+                <?php } ?>
 
                 <label for="date" class="required">Melyik nap érsz rá?</label>
-                <input required id="date" type="date" name="date" 
-                    value="<?= (!empty($_GET["date"])) ? $_GET["date"] : "" ?>"><br />
+                <input required id="date" type="date" name="date" min="<?= date("Y-m-d", strtotime("tomorrow")) ?>"
+                    value="<?= (!empty($_GET["date"])) ? $_GET["date"] : "" ?>">
+                <?php if (!empty($_GET["error"]) && $_GET["error"] == "EmptyField" && 
+                            isset($_GET["field"]) && $_GET["field"] == "date") { ?>
+                    <span class="error">Megadása kötelező!</span>
+                <?php } ?>
+                <?php if (!empty($_GET["error"]) && $_GET["error"] == "InvalidDate") { ?>
+                    <span class="error">Jövőbeli értelmes dátumnak kell lennie!</span>
+                <?php } ?>
+                <br />
 
-                <label for="time" class="required">Milyen időpontban?</label>
-                <input required id="time"type="time" name="time"
-                    value="<?= (!empty($_GET["time"])) ? $_GET["time"] : "" ?>"><br />
+                <label for="time" class="required">Milyen időpontban? [8:00 és 16:00 között]</label>
+                <input required id="time"type="time" name="time" min="08:00" max="16:00"
+                    value="<?= (!empty($_GET["time"])) ? $_GET["time"] : "" ?>">
+                <?php if (!empty($_GET["error"]) && $_GET["error"] == "EmptyField" && 
+                            isset($_GET["field"]) && $_GET["field"] == "time") { ?>
+                    <span class="error">Megadása kötelező!</span>
+                <?php } ?>
+                <?php if (!empty($_GET["error"]) && $_GET["error"] == "InvalidTime") { ?>
+                    <span class="error">Az időpontnak ügyfélfogadási időbe kell esnie!</span>
+                <?php } ?><br />
 
-                <label for="phone" class="required">Írd be a telefonszámod:</label>
+                <label for="phone" class="required">Írd be a telefonszámod: [pl. +36 30 123 4567]</label>
                 <input id="phone" required type="tel" placeholder="pl. +36 30 123 4567"
-                    pattern="\+36 [0-9]{2} [0-9]{3} [0-9]{4}" name="mobileNumber"
-                    value="<?= (!empty($_GET["mobileNumber"])) ? $_GET["mobileNumber"] : "" ?>"><br />
+                    pattern="\+36 ?[0-9]{1,2} ?[0-9]{3,4} ?[0-9]{3,4}" name="mobileNumber"
+                    value="<?= (!empty($_GET["mobileNumber"])) ? $_GET["mobileNumber"] : "" ?>">
+                <?php if (!empty($_GET["error"]) && $_GET["error"] == "EmptyField" && 
+                            isset($_GET["field"]) && $_GET["field"] == "mobileNumber") { ?>
+                    <span class="error">Megadása kötelező!</span>
+                <?php } ?>
+                <?php if (!empty($_GET["error"]) && $_GET["error"] == "InvalidMobileNumber") { ?>
+                    <span class="error">A telefonszámot a megadott formátumban kell megadni!</span>
+                <?php } ?><br />
 
                 
                 <input type="submit" value="Foglalás" />
