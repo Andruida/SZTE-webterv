@@ -2,3 +2,4 @@
 *.log
 img/profile/*.png
 !default.png
+update_remote.sh
