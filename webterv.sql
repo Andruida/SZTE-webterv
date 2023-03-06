@@ -62,6 +62,10 @@ CREATE TABLE `users` (
   `is_admin` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+INSERT INTO `users` (`id`, `email`, `password`, `display_name`, `birth_date`, `introduction`, `is_admin`) VALUES
+(1, 'admin@example.com', '$2a$12$cnY6nFele7IXk0CS4/CmT.JBULwISF2HoP/rJnv0xHR1/lVjxB9wO', 'admin', '2001-09-11', 'Admin vagyok', 1),
+(2, 'user@example.com', '$2a$12$xw.KjkxRPN1Yl8mzL9PcoO9Lvqz2LWOUGSoOfto.NGbQU7p6bs6MS', 'user', '2001-09-11', 'Felhasználó vagyok', 0);
+
 
 ALTER TABLE `feedback`
   ADD PRIMARY KEY (`id`),
@@ -97,7 +101,7 @@ ALTER TABLE `ratings`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 
 ALTER TABLE `feedback`

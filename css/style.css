@@ -198,21 +198,6 @@ div {
   border: 1px solid #ccc;
 }
 
-table {
-  width: 100%;
-}
-
-table,
-td,
-th {
-  border: 1px solid black;
-  border-collapse: collapse;
-}
-
-td {
-  padding: 0.3em;
-}
-
 ol {
   list-style-type: decimal;
   margin-left: 20px;
@@ -397,6 +382,7 @@ hr {
   margin-right: auto;
   display: block;
   max-width: 80%;
+  max-height: 300px;
   margin-bottom: 10px;
 }
 

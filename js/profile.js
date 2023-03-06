@@ -6,6 +6,8 @@ function enableEdit() {
     $("#buttons input[type=\"submit\"]").show()
 }
 function removeProfile() {
-    if (confirm("Biztos törölni akarod?"))
-        window.location="backend/removeProfile.php";
+    if (confirm("Biztos törölni akarod?")) {
+        $.post("backend/removeProfile.php")
+        .done(function(data) {window.location="index.php"})
+    }
 }

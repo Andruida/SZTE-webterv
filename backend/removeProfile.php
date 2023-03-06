@@ -9,7 +9,7 @@ session_start();
 
 
 if (!isset($_SESSION['id']) || empty($_SESSION['id'])) {
-    header("Location: ../bejelentkezés.php");
+    // header("Location: ../bejelentkezés.php");
     exit();
 }
 
@@ -21,6 +21,6 @@ $success = mysqli_stmt_execute($stmt, [$_SESSION['id']]);
 
 unlink(__DIR__."/../img/profile/".$_SESSION['id'].".png");
 session_destroy();
-header("Location: ../index.php");
+// header("Location: ../index.php");
 
 ?>

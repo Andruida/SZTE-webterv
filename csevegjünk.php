@@ -65,27 +65,27 @@ include(__DIR__.'/components/head.php');
                         <tr>
                             <td>Hangtechnikai szolgáltatások</td>
                             <td>60</td>
-                            <td>7000</td>
-                            <td>6000</td>
-                            <td>5000</td>
+                            <td>7.000</td>
+                            <td>6.000</td>
+                            <td>5.000</td>
                             <td class="nomobile">Az élő események, a reklámfilmek és a filmek hangosítására és
                                 feldolgozására szolgáló szolgáltatások.</td>
                         </tr>
                         <tr>
                             <td>Hang újra felvevő szolgáltatások</td>
                             <td>120</td>
-                            <td>10000</td>
-                            <td>11000</td>
-                            <td>12000</td>
+                            <td>10.000</td>
+                            <td>11.000</td>
+                            <td>12.000</td>
                             <td class="nomobile">Azokat a szolgáltatásokat, amelyek lehetővé teszik a régi vagy elavult
                                 hangfájlok újrafelvételét, frissítését vagy megújítását.</td>
                         </tr>
                         <tr>
                             <td>Hangfájl transzkódolása</td>
                             <td>20</td>
-                            <td>6000</td>
-                            <td>5000</td>
-                            <td>4000</td>
+                            <td>6.000</td>
+                            <td>5.000</td>
+                            <td>4.000</td>
                             <td class="nomobile">Az audio formátum átalakítását jelenti, például MP3-ból WAV-ba vagy
                                 vice
                                 versa.</td>
@@ -93,9 +93,9 @@ include(__DIR__.'/components/head.php');
                         <tr>
                             <td>Hangfájl minőség javítása</td>
                             <td>50</td>
-                            <td>15000</td>
-                            <td>14000</td>
-                            <td>13000</td>
+                            <td>15.000</td>
+                            <td>14.000</td>
+                            <td>13.000</td>
                             <td class="nomobile">Az alacsony minőségű hangfájlok javítását jelenti, beleértve a
                                 zajszűrést,
                                 a frekvencia-állomány javítását és a hangerőszabályozást.</td>
@@ -103,18 +103,26 @@ include(__DIR__.'/components/head.php');
                         <tr>
                             <td>Hangfájl szerkesztése</td>
                             <td>180</td>
-                            <td>20000</td>
-                            <td>21000</td>
-                            <td>22000</td>
+                            <td>20.000</td>
+                            <td>21.000</td>
+                            <td>22.000</td>
                             <td class="nomobile">A hangfájlok kézi szerkesztése, például a zajok eltávolítása, a
                                 hangeffektek hozzáadása és a hang időzítésének finomítása.</td>
                         </tr>
                         <tr>
-                            <td>Hangfájl többszintű rendszerezése:</td>
+                            <td>Hangfájl tömörítése</td>
+                            <td>50</td>
+                            <td>13.000</td>
+                            <td>16.000</td>
+                            <td>20.000</td>
+                            <td class="nomobile">A hangfájl tömörítése során a fájl méretének csökkentése érdekében a hanginformációk kódolása és/vagy tömörítése történik.</td>
+                        </tr>
+                        <tr>
+                            <td>Hangfájl többszintű rendszerezése</td>
                             <td>200</td>
-                            <td>25000</td>
-                            <td>26000</td>
-                            <td>27000</td>
+                            <td>25.000</td>
+                            <td>26.000</td>
+                            <td>27.000</td>
                             <td class="nomobile">A hangfájlok kategóriákra, projektekre és mappákra történő
                                 rendszerezése,
                                 hogy könnyen kereshetők és megtalálhatók legyenek.</td>

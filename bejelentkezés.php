@@ -115,7 +115,8 @@ include(__DIR__ . '/components/head.php');
             <?php } ?><br />
 
             <label for="birth_date">Születési dátum:</label>
-            <input required type="date" id="birth_date" name="birth_date" value="<?= ($faultyRegister ? $_GET["birth_date"] : "") ?>" />
+            <input required type="date" id="birth_date" name="birth_date" max="<?= date("Y-m-d") ?>"
+                value="<?= ($faultyRegister ? $_GET["birth_date"] : "") ?>" />
             <?php if ($faultyRegister && $_GET["error"] == "EmptyField" && isset($_GET["field"]) && $_GET["field"] == "birth_date") { ?>
                 <span class="error">Nem maradhat üresen!</span>
             <?php } ?>
@@ -133,8 +134,10 @@ include(__DIR__ . '/components/head.php');
         </fieldset>
     </form>
 
-    <?php if ($faultyRegister && $_GET["error"] == "DatabaseError") { ?>
-        <script>alert("Adatbázis hiba! Kérlek próbáld újra!")</script>
+    <?php if ($faultyRegister && isset($_GET["error"]) && $_GET["error"] == "DatabaseError") { ?>
+        <script>
+            alert("Adatbázis hiba! Kérlek próbáld újra!")
+        </script>
     <?php } ?>
 
     <?php include(__DIR__ . "/components/footer.php"); ?>

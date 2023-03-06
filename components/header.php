@@ -5,8 +5,8 @@ if (!isset($_SESSION))
 
 $_pages = [
     "Kezdőlap" => "index.php",
-    "Projektjeim" => "projektek.php",
-    "Javaslatok" => urlencode("visszajelzés.php"),
+    "Projektek" => "projektek.php",
+    "Visszajelzés" => urlencode("visszajelzés.php"),
 ];
 
 if (isset($_SESSION["id"]) && !empty($_SESSION["id"])) {
@@ -14,6 +14,7 @@ if (isset($_SESSION["id"]) && !empty($_SESSION["id"])) {
     $_pages["Profilom"] = "profil.php";
     if (isset($_SESSION["admin"]) && !empty($_SESSION["admin"])) {
         $_pages["Rendelések"] = urlencode("rendelések.php");
+        $_pages["Javaslatok"] = urlencode("javaslatok.php");
     }
     $_pages["Kijelentkezés"] = "backend/logout.php";
     

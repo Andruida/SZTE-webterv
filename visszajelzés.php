@@ -1,16 +1,35 @@
-<?php include(__DIR__.'/backend/validator.php'); ?>
+<?php 
+include(__DIR__ . '/backend/validator.php'); 
+
+foreach ($_GET as $key => $value) {
+    $_GET[$key] = htmlspecialchars($value);
+}
+
+$required = ['email', 'name', 'feedback'];
+if (isset($_GET['error'])) {
+    foreach ($required as $key) {
+        if (!isset($_GET[$key]) || empty($_GET[$key]) || is_array($_GET[$key])) {
+            $_GET[$key] = "";
+        }
+    }
+} else {
+    foreach ($required as $key) {
+        $_GET[$key] = "";
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="hu">
 
-<?php 
-$TITLE_SUFFIX = 'Javaslatok';
-include(__DIR__.'/components/head.php'); 
+<?php
+$TITLE_SUFFIX = 'Visszajelzés';
+include(__DIR__ . '/components/head.php');
 ?>
 
 <body>
-    <?php 
-    $ACTIVE = 'Javaslatok';
-    include(__DIR__.'/components/header.php'); 
+    <?php
+    $ACTIVE = 'Visszajelzés';
+    include(__DIR__ . '/components/header.php');
     ?>
     <main>
         <article>
@@ -33,13 +52,49 @@ include(__DIR__.'/components/head.php');
                 <legend>Visszajelzés</legend>
 
                 <label for="email">Email címed:</label>
-                <input required id="email" maxlength="100" type="email" name="email" /><br />
+                <input type="email" id="email" name="email" required maxlength="100" 
+                    value="<?= $_GET["email"] ?>" />
+                <?php if (
+                    isset($_GET["error"]) && $_GET["error"] == "EmptyField" &&
+                    isset($_GET["field"]) && $_GET["field"] == "email"
+                ) { ?>
+                    <span class="error">Nem maradhat üresen!</span>
+                <?php } ?>
+                <?php if (
+                    isset($_GET["error"]) && $_GET["error"] == "FieldTooLong" &&
+                    isset($_GET["field"]) && $_GET["field"] == "email"
+                ) { ?>
+                    <span class="error">Legfeljebb 100 karakter hosszú lehet!</span>
+                <?php } ?>
+                <?php if (isset($_GET["error"]) && $_GET["error"] == "InvalidEmail") { ?>
+                    <span class="error">Érvénytelen e-mail cím!</span>
+                <?php } ?><br />
 
                 <label for="name">Név:</label>
-                <input required id="name" maxlength="100" type="text" name="name" /><br />
+                <input required id="name" maxlength="100" type="text" name="name" 
+                    value="<?= $_GET["name"] ?>" />
+                <?php if (
+                    isset($_GET["error"]) && $_GET["error"] == "EmptyField" &&
+                    isset($_GET["field"]) && $_GET["field"] == "name"
+                ) { ?>
+                    <span class="error">Nem maradhat üresen!</span>
+                <?php } ?>
+                <?php if (
+                    isset($_GET["error"]) && $_GET["error"] == "FieldTooLong" &&
+                    isset($_GET["field"]) && $_GET["field"] == "name"
+                ) { ?>
+                    <span class="error">Legfeljebb 100 karakter hosszú lehet!</span>
+                <?php } ?><br />
 
                 <label for="feedback">Részletes és kifejtett építő jellegű véleménye:</label>
-                <textarea required id="feedback" name="feedback"></textarea><br />
+                <textarea required id="feedback" name="feedback"><?= $_GET["feedback"] ?></textarea>
+                <?php if (
+                    isset($_GET["error"]) && $_GET["error"] == "EmptyField" &&
+                    isset($_GET["field"]) && $_GET["field"] == "feedback"
+                ) { ?>
+                    <span class="error">Nem maradhat üresen!</span>
+                <?php } ?>
+                <br />
 
                 <label class="required"><input required type="checkbox" /> Belegyezek, hogy harmadik fél kezelje az adataimat.</label>
 
@@ -51,7 +106,7 @@ include(__DIR__.'/components/head.php');
             </fieldset>
         </form>
     </main>
-    <?php include(__DIR__.'/components/footer.php'); ?>
+    <?php include(__DIR__ . '/components/footer.php'); ?>
 </body>
 
 </html>

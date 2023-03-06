@@ -10,7 +10,6 @@ table ul {
 	margin: 0;
 	padding-left: 0.4rem;
 }
-
 table thead {
 	background: #bbb;
 }
@@ -22,12 +21,15 @@ table th, table td {
 	border: 1px solid #888;
 	border-width: 0 1px 1px;
 }
-
+.third-column {
+	width: 100%;
+}
 table {
 	border: 1px solid #888;
 	border-top: 2px solid #888;
 	width: auto;
 }
+
 /*responsive table*/
 @media screen and (max-width: 550px) {
 	/*put each field on its own line and align text to the right
@@ -48,4 +50,5 @@ table {
 	table thead {
 		display: none;
 	}
+
 }

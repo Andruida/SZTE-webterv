@@ -16,6 +16,7 @@ if (isset($TITLE_SUFFIX) && !empty($TITLE_SUFFIX)) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $_title ?></title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/table.css">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <?php if (isset($CSS) && count($CSS) > 0) {
         foreach ($CSS as $css) {

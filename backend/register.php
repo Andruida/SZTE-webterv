@@ -61,7 +61,7 @@ if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
 }
 
 // születési dátum ellenőrzése
-if (strtotime($_POST['birth_date']) === false) {
+if (strtotime($_POST['birth_date']) === false || strtotime($_POST['birth_date']) > time()) {
     redirectWithError("InvalidBirthDate");
 }
 

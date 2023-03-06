@@ -20,7 +20,7 @@ include(__DIR__ . '/components/head.php');
 
 <body>
     <?php
-    $ACTIVE = 'Projektjeim';
+    $ACTIVE = 'Projektek';
     include(__DIR__ . '/components/header.php');
     ?>
 

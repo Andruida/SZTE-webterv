@@ -52,7 +52,7 @@ foreach ($_POST as $key => $value) {
             redirectWithError("FieldTooLong", "&field=".urlencode($key));
         }
     } else {
-        if (array_search($key, $notRequired)) continue;
+        if (array_search($key, $notRequired) !== false) continue;
         redirectWithError("EmptyField", "&field=".urlencode($key));
     }
 }
@@ -63,7 +63,7 @@ if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
 }
 
 // dátum ellenőrzése
-if (strtotime($_POST['birth_date']) === false) {
+if (strtotime($_POST['birth_date']) === false || strtotime($_POST['birth_date']) > time()) {
     redirectWithError("InvalidBirthDate");
 }
 
